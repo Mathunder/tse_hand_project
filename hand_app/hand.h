@@ -4,6 +4,8 @@
 
 class Hand {
 
+private:
+
 };
 
 #endif // HAND_H

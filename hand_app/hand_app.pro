@@ -4,17 +4,32 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++17
 
+# ajout des libs au linker
+win32 {
+    win32-msvc* {
+        LIBS     += opengl32.lib glu32.lib
+    } else {
+        LIBS     += -lopengl32 -lglu32
+    }
+} else:macx {
+        LIBS     += -framework OpenGL
+} else {
+        LIBS     += -lGL -lGLU
+}
+
 # You can make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    finger.cpp \
     hand.cpp \
     main.cpp \
     mainwindow.cpp \
     wall.cpp
 
 HEADERS += \
+    finger.h \
     hand.h \
     mainwindow.h \
     wall.h
