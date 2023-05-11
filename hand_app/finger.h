@@ -1,13 +1,13 @@
-#ifndef FINGER_H
+ifndef FINGER_H
 #define FINGER_H
 
 class Finger {
 
 private:
-    bool finger_is_drawn = true;
+    bool index_is_drawn = true;
 public:
     Finger();
-    void drawFinger();
+    void drawIndex();
 };
 
 #endif // FINGER_H

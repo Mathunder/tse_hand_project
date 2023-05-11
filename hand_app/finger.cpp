@@ -6,47 +6,32 @@ Finger::Finger() {
 
 }
 
-void Finger::drawFinger() {
-    if(this->finger_is_drawn) {
+void Finger::drawIndex() {
+    if(this->index_is_drawn) {
 
-        glClearColor(0.9f, 0.9f, 0.9f, 0.0f);
+//        glBegin(GL_QUADS);
 
-        // Définition de la matrice de projection pour définir la perspective
-        glMatrixMode(GL_PROJECTION);
-        glLoadIdentity();
-        gluPerspective(70.0f, 511.0f/271.0f, 2.0f, 50.0f);
+//        // Face bleu foncé
+//        glColor3f(.1f, .2f, .5f);
+//        glVertex3f(0.f, 5.f, 2.f);
+//        glVertex3f(0.f, 13.f, 2.f);
+//        glVertex3f(1.f, 13.f, 2.f);
+//        glVertex3f(1.f, 5.f, 2.f);
 
-        // Définition de la matrice de modélisation-visualisation pour définir la camera
-        glMatrixMode(GL_MODELVIEW);
-        glLoadIdentity();
-        gluLookAt(-2.0f, 7.0f, 10.0f, 0.f, 0.f, 0.f, 0.f, 1.f, 0.f);
+//        // Face jaune
+//        glColor3f(0.7f, 0.6f, 0.1f);
+//        glVertex3f(0.f, 5.f, 2.f);
+//        glVertex3f(0.f, 5.f, 0.f);
+//        glVertex3f(0.f, 13.f, 0.f);
+//        glVertex3f(0.f, 13.f, 2.f);
 
-        glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
+////        // Face verte
+////        glColor3f(0.2f, 0.7f, 0.5f);
+////        glVertex3f(0.f, 5.f, -5.f);
+////        glVertex3f(8.f, 5.f, -5.f);
+////        glVertex3f(8.f, 5.f, 0.f);
+////        glVertex3f(0.f, 5.f, 0.f);
 
-
-        glBegin(GL_QUADS);
-
-        // Face violette
-        glColor3f(0.5f, 0.2f, 0.7f);
-        glVertex3f(0.f, 0.f, 0.f);
-        glVertex3f(5.f, 0.f, 0.f);
-        glVertex3f(5.f, 5.f, 0.f);
-        glVertex3f(0.f, 5.f, 0.f);
-
-        // Face bleue
-        glColor3f(0.2f, 0.5f, 0.7f);
-        glVertex3f(0.f, 0.f, 0.f);
-        glVertex3f(0.f, 5.f, 0.f);
-        glVertex3f(0.f, 5.f, -5.f);
-        glVertex3f(0.f, 0.f, -5.f);
-
-        // Face verte
-        glColor3f(0.2f, 0.7f, 0.5f);
-        glVertex3f(0.f, 5.f, -5.f);
-        glVertex3f(5.f, 5.f, -5.f);
-        glVertex3f(5.f, 5.f, 0.f);
-        glVertex3f(0.f, 5.f, 0.f);
-
-        glEnd();
+//        glEnd();
     }
 }
