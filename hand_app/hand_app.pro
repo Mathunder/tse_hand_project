@@ -4,6 +4,12 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++17
 
+equals(QT_MAJOR_VERSION, 5) {
+        QT += opengl widgets
+} else:equals(QT_MAJOR_VERSION, 6) {
+        QT += openglwidgets
+}
+
 # ajout des libs au linker
 win32 {
     win32-msvc* {
@@ -26,16 +32,19 @@ SOURCES += \
     hand.cpp \
     main.cpp \
     mainwindow.cpp \
+    scene.cpp \
     wall.cpp
 
 HEADERS += \
     finger.h \
     hand.h \
     mainwindow.h \
+    scene.h \
     wall.h
 
 FORMS += \
-    mainwindow.ui
+    mainwindow.ui \
+    scene.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

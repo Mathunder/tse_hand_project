@@ -6,31 +6,31 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>461</width>
-    <height>346</height>
+    <width>530</width>
+    <height>397</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QWidget" name="scene_widget" native="true">
+   <widget class="Scene" name="scene_widget" native="true">
     <property name="geometry">
      <rect>
       <x>10</x>
       <y>10</y>
-      <width>441</width>
-      <height>221</height>
+      <width>511</width>
+      <height>271</height>
      </rect>
     </property>
    </widget>
    <widget class="QWidget" name="camera_widget" native="true">
     <property name="geometry">
      <rect>
-      <x>190</x>
-      <y>240</y>
-      <width>120</width>
-      <height>61</height>
+      <x>200</x>
+      <y>290</y>
+      <width>141</width>
+      <height>71</height>
      </rect>
     </property>
    </widget>
@@ -40,13 +40,21 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>461</width>
+     <width>530</width>
      <height>17</height>
     </rect>
    </property>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>Scene</class>
+   <extends>QWidget</extends>
+   <header location="global">scene.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>
