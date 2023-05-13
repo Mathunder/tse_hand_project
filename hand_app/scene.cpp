@@ -34,11 +34,11 @@ void Scene::resizeGL(int width, int height) {
 void Scene::paintGL() {
     Hand *hand = new Hand();
     hand->drawBase();
-//    hand->drawThumb();
-//    hand->drawIndex();
-//    hand->drawMiddleFinger();
-//    hand->drawRingFinger();
-//    hand->drawLittleFinger();
+    hand->drawThumb(false);
+    hand->drawIndex(false);
+    hand->drawMiddleFinger(false);
+    hand->drawRingFinger(false);
+    hand->drawLittleFinger(false);
 }
 
 Scene::~Scene()

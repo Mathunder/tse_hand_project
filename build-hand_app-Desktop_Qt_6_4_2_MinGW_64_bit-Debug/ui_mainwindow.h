@@ -32,19 +32,19 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName("MainWindow");
-        MainWindow->resize(530, 397);
+        MainWindow->resize(710, 470);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");
         scene_widget = new Scene(centralwidget);
         scene_widget->setObjectName("scene_widget");
-        scene_widget->setGeometry(QRect(10, 10, 511, 271));
+        scene_widget->setGeometry(QRect(10, 10, 691, 411));
         camera_widget = new QWidget(centralwidget);
         camera_widget->setObjectName("camera_widget");
-        camera_widget->setGeometry(QRect(200, 290, 141, 71));
+        camera_widget->setGeometry(QRect(500, 300, 201, 111));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 530, 17));
+        menubar->setGeometry(QRect(0, 0, 710, 17));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName("statusbar");

@@ -23,7 +23,7 @@ public:
     {
         if (Scene->objectName().isEmpty())
             Scene->setObjectName("Scene");
-        Scene->resize(400, 300);
+        Scene->resize(532, 384);
 
         retranslateUi(Scene);
 

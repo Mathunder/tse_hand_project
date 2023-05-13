@@ -15,99 +15,157 @@ void Hand::drawBase() {
      * }
      */
 
+    GLfloat grey[3] = {0.7f, 0.7f, 0.7f};
+    GLfloat black[3] = {0.f, 0.f, 0.f};
+
+
     //Intérieur de la main -------------------
 
+
     //Colonne 1
-    cube.drawCube(-7, 0, 0.f);
+    cube.drawCube(-7, 0, 0.f, grey);
 
     //Colonne 2
     for(int i=-2; i<=1; i++)
-        cube.drawCube(-6, i, 0.f);
+        cube.drawCube(-6, i, 0.f, grey);
 
     //Colone 3
     for(int i=-4; i<=-1; i++)
-        cube.drawCube(-5, i, 0.f);
+        cube.drawCube(-5, i, 0.f, grey);
 
     //Colonne 4 & 5
     for(int j=-4; j<=-3; j++) {
         for(int i=-6; i<=7; i++)
-            cube.drawCube(j, i, 0.f);
+            cube.drawCube(j, i, 0.f, grey);
     }
-    cube.drawCube(-3, -7, 0.f);
+    cube.drawCube(-3, -7, 0.f, grey);
 
     //Colonne 6
     for(int i=-7; i<=3; i++)
-        cube.drawCube(-2, i, 0.f);
+        cube.drawCube(-2, i, 0.f, grey);
 
     //Colonne 7 & 8
     for(int j=-1; j<=0; j++) {
         for(int i=-7; i<=8; i++)
-            cube.drawCube(j, i, 0.f);
+            cube.drawCube(j, i, 0.f, grey);
     }
 
     //Colonne 9
     for(int i=-7; i<=3; i++)
-        cube.drawCube(1, i, 0.f);
+        cube.drawCube(1, i, 0.f, grey);
 
     //Colonne 10 & 11
     for(int j=2; j<=3; j++) {
-        for(int i=-7; i<=6; i++)
-            cube.drawCube(j, i, 0.f);
+        for(int i=-7; i<=7; i++)
+            cube.drawCube(j, i, 0.f, grey);
     }
 
     //Colonne 12
     for(int i=-7; i<=3; i++)
-        cube.drawCube(4, i, 0.f);
+        cube.drawCube(4, i, 0.f, grey);
 
     //Colonne 13
     for(int i=-4; i<=6; i++)
-        cube.drawCube(5, i, 0.f);
+        cube.drawCube(5, i, 0.f, grey);
 
     //Colonne 14
     for(int i=-2; i<=5; i++)
-        cube.drawCube(6, i, 0.f);
+        cube.drawCube(6, i, 0.f, grey);
+
 
     //Contour de la main --------------
 
+    //Colonne 1
+    cube.drawCube(-7, -2, 0.f, black);
+
+    //Colonne 2
+    cube.drawCube(-6, 2, 0.f, black);
+    cube.drawCube(-6, -3, 0.f, black);
+    cube.drawCube(-6, -4, 0.f, black);
+
+    //Colonne 3
+    for(int i=0; i<=7; i++)
+        cube.drawCube(-5, i, 0.f, black);
+    cube.drawCube(-5, -5, 0.f, black);
+    cube.drawCube(-5, -6, 0.f, black);
+
+    //Colonne 4
+    cube.drawCube(-4, -7, 0.f, black);
+
+    //Ligne dessous main
+    for(int i=-4; i<=5; i++)
+        cube.drawCube(i, -8, 0.f, black);
+
+    //Colonne 6
+    for(int i=4; i<=9; i++)
+        cube.drawCube(-2, i, 0.f, black);
+
+    //Colonne 9
+    for(int i=4; i<=8; i++)
+        cube.drawCube(1, i, 0.f, black);
+
+    //Colonne 12
+    for(int i=4; i<=7; i++)
+        cube.drawCube(4, i, 0.f, black);
+
+    //Colonne 13
+    for(int i=-8; i<=-5; i++)
+        cube.drawCube(5, i, 0.f, black);
+
+    //Colonne 14
+    for(int i=-4; i<=-3; i++)
+        cube.drawCube(6, i, 0.f, black);
+
+    //Colonne 15
+    for(int i=-2; i<=5; i++)
+        cube.drawCube(7, i, 0.f, black);
 
 }
 
-void Hand::drawThumb() {
-    for(int j=1; j<=2; j++)
-        cube.drawCube(-8, j, 0.f);
-    for(int j=0; j<=2; j++)
-        cube.drawCube(-7, j, 0.f);
-    for(int j=-2; j<=1; j++)
-        cube.drawCube(-6, j, 0.f);
-    for(int j=-4; j<=-1; j++)
-        cube.drawCube(-5, j, 0.f);
-}
+void Hand::drawThumb(boolean is_drawn) {
+    if(is_drawn) {
 
-void Hand::drawIndex() {
-    for(int i=-4; i<=-3; i++) {
-        for(int j=4; j<=11; j++)
-            cube.drawCube(i, j, 0.f);
+    } else {
+        cube.drawCube(-7, -1, 0.f, light_grey);
+        cube.drawCube(-8, -1, 0.f, black);
+        cube.drawCube(-8, 0, 0.f, black);
+        cube.drawCube(-7, 1, 0.f, black);
     }
 }
 
-void Hand::drawMiddleFinger() {
-    for(int i=-1; i<=0; i++) {
-        for(int j=4; j<=8; j++)
-            cube.drawCube(i, j, 0.f);
+void Hand::drawIndex(boolean is_drawn) {
+    if(is_drawn) {
+
+    } else {
+        cube.drawCube(-4, 8, 0.f, black);
+        cube.drawCube(-3, 8, 0.f, black);
     }
 }
 
-void Hand::drawRingFinger() {
-    for(int i=2; i<=3; i++) {
-        for(int j=4; j<=7; j++)
-            cube.drawCube(i, j, 0.f);
+void Hand::drawMiddleFinger(boolean is_drawn) {
+    if(is_drawn) {
+
+    } else {
+        cube.drawCube(-1, 9, 0.f, black);
+        cube.drawCube(0, 9, 0.f, black);
     }
 }
 
-void Hand::drawLittleFinger() {
-    for(int j=4; j<=6; j++)
-        cube.drawCube(5, j, 0.f);
-    for(int j=4; j<=5; j++)
-        cube.drawCube(6, j, 0.f);
+void Hand::drawRingFinger(boolean is_drawn) {
+    if(is_drawn) {
+
+    } else {
+        cube.drawCube(2, 8, 0.f, black);
+        cube.drawCube(3, 8, 0.f, black);
+    }
+}
+
+void Hand::drawLittleFinger(boolean is_drawn) {
+    if(is_drawn) {
+
+    } else {
+        cube.drawCube(5, 7, 0.f, black);
+        cube.drawCube(6, 6, 0.f, black);
+    }
 }
 
