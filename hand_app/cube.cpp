@@ -7,7 +7,7 @@ Cube::Cube()
 
 }
 
-void Cube::drawCube(float bottom_left_corner_x, float bottom_left_corner_y, float bottom_left_corner_z) {
+void Cube::drawCube(float bottom_left_corner_x, float bottom_left_corner_y, float bottom_left_corner_z, GLfloat color[]) {
     // Face arrière
     glBegin(GL_QUADS);
     glColor3f(blue[0], blue[1], blue[2]);
@@ -46,7 +46,7 @@ void Cube::drawCube(float bottom_left_corner_x, float bottom_left_corner_y, floa
 
     // Face haut
     glBegin(GL_QUADS);
-    glColor3f(grey[0], grey[1], grey[2]);
+    glColor3f(color[0], color[1], color[2]);
     glVertex3f(bottom_left_corner_x, bottom_left_corner_y + 1, bottom_left_corner_z);
     glVertex3f(bottom_left_corner_x + 1, bottom_left_corner_y + 1, bottom_left_corner_z);
     glVertex3f(bottom_left_corner_x + 1, bottom_left_corner_y + 1, bottom_left_corner_z-1);

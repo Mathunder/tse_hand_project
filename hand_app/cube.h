@@ -13,7 +13,7 @@ private:
 public:
     Cube();
 
-    void drawCube(float bottom_left_corner_x, float bottom_left_corner_y, float bottom_left_corner_z);
+    void drawCube(float bottom_left_corner_x, float bottom_left_corner_y, float bottom_left_corner_z, GLfloat color[]);
 };
 
 #endif // CUBE_H

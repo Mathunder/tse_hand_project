@@ -33,12 +33,12 @@ void Scene::resizeGL(int width, int height) {
 
 void Scene::paintGL() {
     Hand *hand = new Hand();
-    hand->drawPalm();
-    hand->drawThumb();
-    hand->drawIndex();
-    hand->drawMiddleFinger();
-    hand->drawRingFinger();
-    hand->drawLittleFinger();
+    hand->drawBase();
+//    hand->drawThumb();
+//    hand->drawIndex();
+//    hand->drawMiddleFinger();
+//    hand->drawRingFinger();
+//    hand->drawLittleFinger();
 }
 
 Scene::~Scene()

@@ -10,7 +10,7 @@ private:
 public:
     Hand();
     void Display();
-    void drawPalm();
+    void drawBase();
     void drawThumb();
     void drawIndex();
     void drawMiddleFinger();
