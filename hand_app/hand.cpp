@@ -125,6 +125,19 @@ void Hand::drawBase() {
 void Hand::drawThumb(boolean is_drawn) {
     if(is_drawn) {
 
+        //Interieur pouce
+        for(int j=1; j<=2; j++) {
+            for(int i=-8; i<=-7; i++)
+                cube.drawCube(i, j, 0.f, light_grey);
+        }
+
+        //Contour pouce
+        for(int i=1; i<=3; i++)
+            cube.drawCube(-9, i, 0.f, black);
+        cube.drawCube(-8, 3, 0.f, black);
+        cube.drawCube(-8, 0, 0.f, black);
+        cube.drawCube(-7, 3, 0.f, black);
+        cube.drawCube(-7, -1, 0.f, black);
     } else {
         cube.drawCube(-7, -1, 0.f, light_grey);
         cube.drawCube(-8, -1, 0.f, black);
@@ -135,7 +148,19 @@ void Hand::drawThumb(boolean is_drawn) {
 
 void Hand::drawIndex(boolean is_drawn) {
     if(is_drawn) {
+        //Intérieur index
+        for(int j=8; j<=12; j++) {
+            for(int i=-4; i<=-3; i++)
+                cube.drawCube(i, j, 0.f, light_grey);
+        }
 
+        //Contour index
+        for(int i=8; i<=12; i++)
+            cube.drawCube(-5, i, 0.f, black);
+        cube.drawCube(-4, 13, 0.f, black);
+        cube.drawCube(-3, 13, 0.f, black);
+        for(int i=10; i<=14; i++)
+            cube.drawCube(-2, i, 0.f, black);
     } else {
         cube.drawCube(-4, 8, 0.f, black);
         cube.drawCube(-3, 8, 0.f, black);
