@@ -117,7 +117,7 @@ void Hand::drawBase() {
         cube.drawCube(6, i, 0.f, black);
 
     //Colonne 15
-    for(int i=-2; i<=5; i++)
+    for(int i=-2; i<=6; i++)
         cube.drawCube(7, i, 0.f, black);
 
 }
@@ -153,13 +153,12 @@ void Hand::drawIndex(boolean is_drawn) {
             for(int i=-4; i<=-3; i++)
                 cube.drawCube(i, j, 0.f, light_grey);
         }
-
         //Contour index
         for(int i=8; i<=12; i++)
             cube.drawCube(-5, i, 0.f, black);
         cube.drawCube(-4, 13, 0.f, black);
         cube.drawCube(-3, 13, 0.f, black);
-        for(int i=10; i<=14; i++)
+        for(int i=10; i<=12; i++)
             cube.drawCube(-2, i, 0.f, black);
     } else {
         cube.drawCube(-4, 8, 0.f, black);
@@ -169,7 +168,18 @@ void Hand::drawIndex(boolean is_drawn) {
 
 void Hand::drawMiddleFinger(boolean is_drawn) {
     if(is_drawn) {
-
+        // Intérieur majeur
+        for(int j=9; j<=14; j++) {
+            for(int i=-1; i<=0; i++)
+                cube.drawCube(i, j, 0.f, light_grey);
+        }
+        // Contour majeur
+        for(int i=10; i<=14; i++)
+            cube.drawCube(-2, i, 0.f, black);
+        cube.drawCube(-1, 15, 0.f, black);
+        cube.drawCube(0, 15, 0.f, black);
+        for(int i=9; i<=14; i++)
+            cube.drawCube(1, i, 0.f, black);
     } else {
         cube.drawCube(-1, 9, 0.f, black);
         cube.drawCube(0, 9, 0.f, black);
@@ -178,7 +188,18 @@ void Hand::drawMiddleFinger(boolean is_drawn) {
 
 void Hand::drawRingFinger(boolean is_drawn) {
     if(is_drawn) {
-
+        // Intérieur du doigt
+        for(int j=8; j<=12; j++) {
+            for(int i=2; i<=3; i++)
+                cube.drawCube(i, j, 0.f, light_grey);
+        }
+        // Contour du doigt
+        for(int i=9; i<=12; i++)
+            cube.drawCube(1, i, 0.f, black);
+        cube.drawCube(2, 13, 0.f, black);
+        cube.drawCube(3, 13, 0.f, black);
+        for(int i=8; i<=12; i++)
+            cube.drawCube(4, i, 0.f, black);
     } else {
         cube.drawCube(2, 8, 0.f, black);
         cube.drawCube(3, 8, 0.f, black);
@@ -187,7 +208,20 @@ void Hand::drawRingFinger(boolean is_drawn) {
 
 void Hand::drawLittleFinger(boolean is_drawn) {
     if(is_drawn) {
-
+        // Intérieur du doigt
+        for(int j=7; j<=9; j++) {
+            for(int i=5; i<=6; i++)
+                cube.drawCube(i, j, 0.f, light_grey);
+        }
+        cube.drawCube(6, 6, 0.f, light_grey);
+        // Contour du doigt
+        cube.drawCube(4, 8, 0.f, black);
+        cube.drawCube(4, 9, 0.f, black);
+        cube.drawCube(5, 10, 0.f, black);
+        cube.drawCube(6, 10, 0.f, black);
+        cube.drawCube(7, 9, 0.f, black);
+        cube.drawCube(7, 8, 0.f, black);
+        cube.drawCube(7, 7, 0.f, black);
     } else {
         cube.drawCube(5, 7, 0.f, black);
         cube.drawCube(6, 6, 0.f, black);
