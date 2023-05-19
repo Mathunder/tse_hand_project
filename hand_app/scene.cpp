@@ -1,7 +1,6 @@
 #include "scene.h"
 #include "ui_scene.h"
 #include "hand.h"
-#include "cube.h"
 
 Scene::Scene(QWidget *parent) : QOpenGLWidget(parent),
     ui(new Ui::Scene)
@@ -32,7 +31,6 @@ void Scene::resizeGL(int width, int height) {
 }
 
 void Scene::paintGL() {
-    Hand *hand = new Hand();
     hand->drawBase();
     hand->drawThumb(true);
     hand->drawIndex(true);

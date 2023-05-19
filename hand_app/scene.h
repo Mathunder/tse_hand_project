@@ -3,6 +3,7 @@
 
 #include <QOpenGLWidget>
 #include <GL/glu.h>
+#include "hand.h"
 
 
 namespace Ui {
@@ -30,6 +31,7 @@ public:
 
 private:
     Ui::Scene *ui;
+    Hand *hand = new Hand();
 };
 
 #endif // SCENE_H
