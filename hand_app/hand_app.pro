@@ -34,7 +34,8 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     scene.cpp \
-    wall.cpp
+    wall.cpp \
+    webcam.cpp
 
 HEADERS += \
     camera.h \
@@ -42,7 +43,8 @@ HEADERS += \
     hand.h \
     mainwindow.h \
     scene.h \
-    wall.h
+    wall.h \
+    webcam.h
 
 FORMS += \
     mainwindow.ui \
@@ -52,6 +54,8 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+INCLUDEPATH +=$$(OPENCV_DIR)\..\..\include
 
 LIBS += -L$$(OPENCV_DIR)\lib \
     -lopencv_core470 \
