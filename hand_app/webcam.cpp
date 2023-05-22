@@ -47,6 +47,7 @@ void Webcam::analyze_hand(Webcam* webcam) {
 }
 
 void Webcam::run() {
+    window.open(0);
 
     while (keepRunning) {
         window >> frame;
@@ -95,6 +96,7 @@ void Webcam::run() {
             circle(frame, b, 3, Scalar(0,0,200), -1);
         }
 
+        imshow("WebCam", frame);
         if (waitKey(1) == 27) {
             break;
         }

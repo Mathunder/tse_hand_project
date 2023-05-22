@@ -34,8 +34,8 @@ void Scene::paintGL() {
     hand->drawBase();
     hand->drawThumb(true);
     hand->drawIndex(true);
-    hand->drawMiddleFinger(false);
-    hand->drawRingFinger(false);
+    hand->drawMiddleFinger(true);
+    hand->drawRingFinger(true);
     hand->drawLittleFinger(true);
 }
 

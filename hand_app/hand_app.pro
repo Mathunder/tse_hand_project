@@ -47,6 +47,7 @@ HEADERS += \
     webcam.h
 
 FORMS += \
+    camera.ui \
     mainwindow.ui \
     scene.ui
 

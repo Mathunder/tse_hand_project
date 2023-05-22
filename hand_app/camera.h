@@ -4,18 +4,19 @@
 #include "webcam.h"
 #include <QWidget>
 
+QT_BEGIN_NAMESPACE
+namespace Ui { class Camera; }
+QT_END_NAMESPACE
 
-namespace Ui {
-class Camera;
-}
-
-class Camera
+class Camera : public QWidget
 {
+    Q_OBJECT
 protected:
     void displayCamera();
 
 public:
-    Camera();
+    explicit Camera(QWidget *parent = nullptr);
+    ~Camera();
 
 private:
     Ui::Camera *ui;

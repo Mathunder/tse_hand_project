@@ -1,7 +1,11 @@
 #include "camera.h"
+#include "ui_camera.h"
 
-Camera::Camera() {
 
+Camera::Camera(QWidget *parent) : QWidget(parent),
+    ui(new Ui::Camera)
+{
+    ui->setupUi(this);
 }
 
 void Camera::displayCamera() {
@@ -11,4 +15,9 @@ void Camera::displayCamera() {
     for (int i=0; i < Webcam::getInstance(argc, argv)->webcamThreads.size(); i++) {
         Webcam::getInstance(argc, argv)->webcamThreads[i].join();
     }
+}
+
+Camera::~Camera()
+{
+    delete ui;
 }

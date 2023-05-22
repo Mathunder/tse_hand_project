@@ -74,7 +74,7 @@ void Hand::drawBase() {
 
 
     //Contour de la main --------------
-
+/*
     //Colonne 1
     cube.drawCube(-7, -2, 0.f, black);
 
@@ -119,6 +119,7 @@ void Hand::drawBase() {
     //Colonne 15
     for(int i=-2; i<=6; i++)
         cube.drawCube(7, i, 0.f, black);
+*/
 
 }
 
@@ -132,17 +133,19 @@ void Hand::drawThumb(boolean is_drawn) {
         }
 
         //Contour pouce
-        for(int i=1; i<=3; i++)
-            cube.drawCube(-9, i, 0.f, black);
-        cube.drawCube(-8, 3, 0.f, black);
-        cube.drawCube(-8, 0, 0.f, black);
-        cube.drawCube(-7, 3, 0.f, black);
-        cube.drawCube(-7, -1, 0.f, black);
+
+//        for(int i=1; i<=3; i++)
+//            cube.drawCube(-9, i, 0.f, black);
+//        cube.drawCube(-8, 3, 0.f, black);
+//        cube.drawCube(-8, 0, 0.f, black);
+//        cube.drawCube(-7, 3, 0.f, black);
+//        cube.drawCube(-7, -1, 0.f, black);
+
     } else {
         cube.drawCube(-7, -1, 0.f, light_grey);
-        cube.drawCube(-8, -1, 0.f, black);
-        cube.drawCube(-8, 0, 0.f, black);
-        cube.drawCube(-7, 1, 0.f, black);
+//        cube.drawCube(-8, -1, 0.f, black);
+//        cube.drawCube(-8, 0, 0.f, black);
+//        cube.drawCube(-7, 1, 0.f, black);
     }
 }
 
@@ -154,15 +157,15 @@ void Hand::drawIndex(boolean is_drawn) {
                 cube.drawCube(i, j, 0.f, light_grey);
         }
         //Contour index
-        for(int i=8; i<=12; i++)
-            cube.drawCube(-5, i, 0.f, black);
-        cube.drawCube(-4, 13, 0.f, black);
-        cube.drawCube(-3, 13, 0.f, black);
-        for(int i=10; i<=12; i++)
-            cube.drawCube(-2, i, 0.f, black);
+//        for(int i=8; i<=12; i++)
+//            cube.drawCube(-5, i, 0.f, black);
+//        cube.drawCube(-4, 13, 0.f, black);
+//        cube.drawCube(-3, 13, 0.f, black);
+//        for(int i=10; i<=12; i++)
+//            cube.drawCube(-2, i, 0.f, black);
     } else {
-        cube.drawCube(-4, 8, 0.f, black);
-        cube.drawCube(-3, 8, 0.f, black);
+//        cube.drawCube(-4, 8, 0.f, black);
+//        cube.drawCube(-3, 8, 0.f, black);
     }
 }
 
@@ -174,15 +177,15 @@ void Hand::drawMiddleFinger(boolean is_drawn) {
                 cube.drawCube(i, j, 0.f, light_grey);
         }
         // Contour majeur
-        for(int i=10; i<=14; i++)
-            cube.drawCube(-2, i, 0.f, black);
-        cube.drawCube(-1, 15, 0.f, black);
-        cube.drawCube(0, 15, 0.f, black);
-        for(int i=9; i<=14; i++)
-            cube.drawCube(1, i, 0.f, black);
+//        for(int i=10; i<=14; i++)
+//            cube.drawCube(-2, i, 0.f, black);
+//        cube.drawCube(-1, 15, 0.f, black);
+//        cube.drawCube(0, 15, 0.f, black);
+//        for(int i=9; i<=14; i++)
+//            cube.drawCube(1, i, 0.f, black);
     } else {
-        cube.drawCube(-1, 9, 0.f, black);
-        cube.drawCube(0, 9, 0.f, black);
+//        cube.drawCube(-1, 9, 0.f, black);
+//        cube.drawCube(0, 9, 0.f, black);
     }
 }
 
@@ -194,15 +197,15 @@ void Hand::drawRingFinger(boolean is_drawn) {
                 cube.drawCube(i, j, 0.f, light_grey);
         }
         // Contour du doigt
-        for(int i=9; i<=12; i++)
-            cube.drawCube(1, i, 0.f, black);
-        cube.drawCube(2, 13, 0.f, black);
-        cube.drawCube(3, 13, 0.f, black);
-        for(int i=8; i<=12; i++)
-            cube.drawCube(4, i, 0.f, black);
+//        for(int i=9; i<=12; i++)
+//            cube.drawCube(1, i, 0.f, black);
+//        cube.drawCube(2, 13, 0.f, black);
+//        cube.drawCube(3, 13, 0.f, black);
+//        for(int i=8; i<=12; i++)
+//            cube.drawCube(4, i, 0.f, black);
     } else {
-        cube.drawCube(2, 8, 0.f, black);
-        cube.drawCube(3, 8, 0.f, black);
+//        cube.drawCube(2, 8, 0.f, black);
+//        cube.drawCube(3, 8, 0.f, black);
     }
 }
 
@@ -215,16 +218,16 @@ void Hand::drawLittleFinger(boolean is_drawn) {
         }
         cube.drawCube(6, 6, 0.f, light_grey);
         // Contour du doigt
-        cube.drawCube(4, 8, 0.f, black);
-        cube.drawCube(4, 9, 0.f, black);
-        cube.drawCube(5, 10, 0.f, black);
-        cube.drawCube(6, 10, 0.f, black);
-        cube.drawCube(7, 9, 0.f, black);
-        cube.drawCube(7, 8, 0.f, black);
-        cube.drawCube(7, 7, 0.f, black);
+//        cube.drawCube(4, 8, 0.f, black);
+//        cube.drawCube(4, 9, 0.f, black);
+//        cube.drawCube(5, 10, 0.f, black);
+//        cube.drawCube(6, 10, 0.f, black);
+//        cube.drawCube(7, 9, 0.f, black);
+//        cube.drawCube(7, 8, 0.f, black);
+//        cube.drawCube(7, 7, 0.f, black);
     } else {
-        cube.drawCube(5, 7, 0.f, black);
-        cube.drawCube(6, 6, 0.f, black);
+//        cube.drawCube(5, 7, 0.f, black);
+//        cube.drawCube(6, 6, 0.f, black);
     }
 }
 
