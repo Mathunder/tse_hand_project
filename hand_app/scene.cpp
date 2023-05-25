@@ -41,6 +41,7 @@ void Scene::paintGL() {
     hand->drawMiddleFinger(true);
     hand->drawRingFinger(true);
     hand->drawLittleFinger(true);
+    hand->rotate();
 }
 
 Scene::~Scene()
@@ -50,6 +51,5 @@ Scene::~Scene()
 }
 
 //void Scene::update() {
-//    initializeGL();
 //    paintGL();
 //}

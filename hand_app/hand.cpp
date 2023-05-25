@@ -231,5 +231,9 @@ void Hand::drawLittleFinger(boolean is_drawn) {
     }
 }
 
+void Hand::rotate() {
+    glRotatef(6.0f, .0f, 1.0f, .0f);
+}
+
 Hand::~Hand() {
 }

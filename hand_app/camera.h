@@ -20,6 +20,7 @@ public:
 private:
     Ui::Camera *ui;
     Webcam *webcam;
+    bool analyze = false;
 //    cv::VideoCapture *window;
 //    cv::Mat frame;
 //    QImage img;
