@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>710</width>
-    <height>470</height>
+    <height>573</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,17 +20,20 @@
       <x>10</x>
       <y>10</y>
       <width>691</width>
-      <height>411</height>
+      <height>351</height>
      </rect>
     </property>
    </widget>
-   <widget class="QWidget" name="camera_widget" native="true">
+   <widget class="Camera" name="camera_widget" native="true">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="geometry">
      <rect>
-      <x>500</x>
-      <y>300</y>
-      <width>201</width>
-      <height>111</height>
+      <x>220</x>
+      <y>370</y>
+      <width>291</width>
+      <height>161</height>
      </rect>
     </property>
    </widget>
@@ -52,6 +55,12 @@
    <class>Scene</class>
    <extends>QWidget</extends>
    <header location="global">scene.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>Camera</class>
+   <extends>QWidget</extends>
+   <header>camera.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

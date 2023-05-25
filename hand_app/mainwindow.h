@@ -3,8 +3,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-
-
+#include <QTimer>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -21,6 +20,10 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    QTimer *timer;
+
+private slots:
+    void update();
 };
 
 #endif // MAINWINDOW_H

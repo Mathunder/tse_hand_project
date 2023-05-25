@@ -3,6 +3,7 @@
 
 #include "webcam.h"
 #include <QWidget>
+#include <QImage>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Camera; }
@@ -11,18 +12,17 @@ QT_END_NAMESPACE
 class Camera : public QWidget
 {
     Q_OBJECT
-protected:
-    void displayCamera();
-
 public:
     explicit Camera(QWidget *parent = nullptr);
+    void displayCamera();
     ~Camera();
 
 private:
     Ui::Camera *ui;
-    int argc;
-    char **argv;
-    Webcam *webcam = new Webcam(argc, argv);
+    Webcam *webcam;
+//    cv::VideoCapture *window;
+//    cv::Mat frame;
+//    QImage img;
 };
 
 #endif // CAMERA_H

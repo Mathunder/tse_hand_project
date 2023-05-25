@@ -6,6 +6,10 @@ Scene::Scene(QWidget *parent) : QOpenGLWidget(parent),
     ui(new Ui::Scene)
 {
     ui->setupUi(this);
+
+//    timer = new QTimer(this);
+//    connect(timer, SIGNAL(timeout()), this, SLOT(update()));
+//    timer->start(1000); //60fps
 }
 
 void Scene::initializeGL() {
@@ -42,4 +46,10 @@ void Scene::paintGL() {
 Scene::~Scene()
 {
     delete ui;
+//    delete timer;
 }
+
+//void Scene::update() {
+//    initializeGL();
+//    paintGL();
+//}

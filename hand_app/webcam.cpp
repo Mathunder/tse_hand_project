@@ -1,27 +1,28 @@
 #include "webcam.h"
+#include "qimage.h"
 
 using namespace std;
 using namespace cv;
 
-Webcam::Webcam(int argc, char **argv) {
-    CommandLineParser parser(argc, argv,
-                             "{ h help           | false     | print this help message }"
-                             "{ p proto          | C:/Users/Matthieu/Documents/Ecole/TelecomSaintEtienne/FISE2/S8/Bibliotheque_de_developpement/TestOpenCV/pose_deploy.prototxt | (required) model configuration, e.g. hand/pose.prototxt }"
-                             "{ m model          | C:/Users/Matthieu/Documents/Ecole/TelecomSaintEtienne/FISE2/S8/Bibliotheque_de_developpement/TestOpenCV/pose_iter_102000.caffemodel | (required) model weights, e.g. hand/pose_iter_102000.caffemodel }"
-                             "{ i image          | C:/Users/Matthieu/Documents/Ecole/TelecomSaintEtienne/FISE2/S8/Bibliotheque_de_developpement/TestOpenCV/hand3.png | (required) path to image file (containing a single person, or hand) }"
-                             "{ d dataset        | HAND      | specify what kind of model was trained. It could be (COCO, MPI, HAND) depends on dataset. }"
-                             "{ width            |  368      | Preprocess input image by resizing to a specific width. }"
-                             "{ height           |  368      | Preprocess input image by resizing to a specific height. }"
-                             "{ t threshold      |  0.1      | threshold or confidence value for the heatmap }"
-                             "{ s scale          |  0.003922 | scale for blob }"
-                             );
-    modelTxt = samples::findFile(parser.get<string>("model"));
-    modelBin = samples::findFile(parser.get<string>("proto"));
-    dataset = parser.get<String>("dataset");
-    W_in = parser.get<int>("width");
-    H_in = parser.get<int>("height");
-    thresh = parser.get<float>("threshold");
-    scale  = parser.get<float>("scale");
+Webcam::Webcam() {
+//    CommandLineParser parser(argc, argv,
+//                             "{ h help           | false     | print this help message }"
+//                             "{ p proto          | C:/Users/Matthieu/Documents/Ecole/TelecomSaintEtienne/FISE2/S8/Bibliotheque_de_developpement/TestOpenCV/pose_deploy.prototxt | (required) model configuration, e.g. hand/pose.prototxt }"
+//                             "{ m model          | C:/Users/Matthieu/Documents/Ecole/TelecomSaintEtienne/FISE2/S8/Bibliotheque_de_developpement/TestOpenCV/pose_iter_102000.caffemodel | (required) model weights, e.g. hand/pose_iter_102000.caffemodel }"
+//                             "{ i image          | C:/Users/Matthieu/Documents/Ecole/TelecomSaintEtienne/FISE2/S8/Bibliotheque_de_developpement/TestOpenCV/hand3.png | (required) path to image file (containing a single person, or hand) }"
+//                             "{ d dataset        | HAND      | specify what kind of model was trained. It could be (COCO, MPI, HAND) depends on dataset. }"
+//                             "{ width            |  368      | Preprocess input image by resizing to a specific width. }"
+//                             "{ height           |  368      | Preprocess input image by resizing to a specific height. }"
+//                             "{ t threshold      |  0.1      | threshold or confidence value for the heatmap }"
+//                             "{ s scale          |  0.003922 | scale for blob }"
+//                             );
+    modelTxt = samples::findFile("../hand_app/pose_iter_102000.caffemodel");
+    modelBin = samples::findFile("../hand_app/pose_deploy.prototxt");
+    dataset = "HAND";
+//    W_in = 368;
+//    H_in = 368;
+//    thresh = 0.1;
+//    scale  = 0.003922;
     if (!dataset.compare("HAND")) {  midx = 2; npairs = 20; nparts = 22; }
     else
     {
@@ -31,13 +32,15 @@ Webcam::Webcam(int argc, char **argv) {
     // read the network model
     net = readNet(modelBin, modelTxt);
 
+    window = new VideoCapture(0);
+    img = new QImage();
 }
 
 Webcam* Webcam::s_instance = NULL;
 
-Webcam* Webcam::getInstance(int argc, char **argv) {
+Webcam* Webcam::getInstance() {
     if (s_instance == NULL) {
-        s_instance = new Webcam(argc, argv);
+        s_instance = new Webcam();
     }
     return s_instance;
 }
@@ -46,11 +49,19 @@ void Webcam::analyze_hand(Webcam* webcam) {
     webcam->run();
 }
 
-void Webcam::run() {
-    window.open(0);
+QImage Webcam::toImg() {
+    if(window->read(frame)) {
+        flip(frame, frame, 1);
+        cvtColor(frame,frame,COLOR_BGR2RGB);
+        *img = QImage((const unsigned char*)(frame.data),frame.cols,frame.rows,QImage::Format_RGB888);
+    }
+    return *img;
+}
 
+void Webcam::run() {
+    window->open(0);
     while (keepRunning) {
-        window >> frame;
+        *window >> frame;
         if (frame.empty())
         {
             std::cerr << "Can't read image from the WebCam." << std::endl;

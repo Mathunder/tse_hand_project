@@ -231,3 +231,5 @@ void Hand::drawLittleFinger(boolean is_drawn) {
     }
 }
 
+Hand::~Hand() {
+}

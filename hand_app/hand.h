@@ -11,6 +11,7 @@ private:
 
 public:
     Hand();
+    ~Hand();
     void Display();
     void drawBase();
     void drawThumb(boolean is_drawn);

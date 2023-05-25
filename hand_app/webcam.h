@@ -1,6 +1,7 @@
 #ifndef WEBCAM_H
 #define WEBCAM_H
 
+#include "qimage.h"
 #include <opencv2/opencv.hpp>
 #include <opencv2/highgui/highgui.hpp>
 #include <thread>
@@ -12,20 +13,21 @@
 using namespace cv;
 using namespace cv::dnn;
 #include <iostream>
-using namespace std;
 
 class Webcam
 {
 public:
-    Webcam(int argc, char **argv);
+    Webcam();
     void run();
     static void analyze_hand(Webcam* webcam);
     bool keepRunning = true; // Will be changed by the external program.
     std::vector<std::thread> webcamThreads;
+    QImage toImg();
 
 private:
+    cv::VideoCapture *window;
     cv::Mat frame;
-    cv::VideoCapture window;
+    QImage *img;
     static Webcam* s_instance;
     Net net;
     String modelTxt, modelBin, dataset;
@@ -56,7 +58,7 @@ private:
         }
     };
 public:
-    static Webcam* getInstance(int argc, char **argv);
+    static Webcam* getInstance();
 };
 
 #endif

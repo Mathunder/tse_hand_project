@@ -4,7 +4,7 @@
 #include <QOpenGLWidget>
 #include <GL/glu.h>
 #include "hand.h"
-
+#include <QTimer>
 
 namespace Ui {
 class Scene;
@@ -32,6 +32,9 @@ public:
 private:
     Ui::Scene *ui;
     Hand *hand = new Hand();
+//    QTimer *timer;
+//private slots:
+//    void update();
 };
 
 #endif // SCENE_H
