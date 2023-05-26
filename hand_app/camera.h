@@ -21,6 +21,8 @@ private:
     Ui::Camera *ui;
     Webcam *webcam;
     bool analyze = false;
+    unsigned int nb_threads = std::thread::hardware_concurrency();
+    std::future<void> cameraThread;
 //    cv::VideoCapture *window;
 //    cv::Mat frame;
 //    QImage img;

@@ -33,7 +33,7 @@ private:
     Ui::Scene *ui;
     Hand *hand = new Hand();
 //    QTimer *timer;
-//private slots:
+//public slots:
 //    void update();
 };
 

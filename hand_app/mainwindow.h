@@ -23,7 +23,8 @@ private:
     QTimer *timer;
 
 private slots:
-    void update();
+    void update_scene();
+    void update_camera();
 };
 
 #endif // MAINWINDOW_H

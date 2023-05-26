@@ -1,5 +1,8 @@
 #include "webcam.h"
+#include <QFuture>
+#include <QtConcurrent/QtConcurrent>
 #include "qimage.h"
+#include <future>
 
 using namespace std;
 using namespace cv;
@@ -19,10 +22,10 @@ Webcam::Webcam() {
     modelTxt = samples::findFile("../hand_app/pose_iter_102000.caffemodel");
     modelBin = samples::findFile("../hand_app/pose_deploy.prototxt");
     dataset = "HAND";
-//    W_in = 368;
-//    H_in = 368;
-//    thresh = 0.1;
-//    scale  = 0.003922;
+    W_in = 368;
+    H_in = 368;
+    thresh = 0.1;
+    scale  = 0.003922;
     if (!dataset.compare("HAND")) {  midx = 2; npairs = 20; nparts = 22; }
     else
     {
@@ -45,41 +48,31 @@ Webcam* Webcam::getInstance() {
     return s_instance;
 }
 
-void Webcam::analyze_hand(Webcam* webcam) {
-    webcam->run();
+void Webcam::analyze_hand(Webcam *webcam) {
+    webcam->run(true);
 }
 
-QImage Webcam::toImg() {
-    if(window->read(frame)) {
-        flip(frame, frame, 1);
-        cvtColor(frame,frame,COLOR_BGR2RGB);
-        *img = QImage((const unsigned char*)(frame.data),frame.cols,frame.rows,QImage::Format_RGB888);
-    }
-    return *img;
-}
-
-void Webcam::run() {
-    window->open(0);
-    while (keepRunning) {
+QImage Webcam::run(bool analyze_hand) {
+    if(analyze_hand) {
         *window >> frame;
-        if (frame.empty())
-        {
+        if (frame.empty()) {
             std::cerr << "Can't read image from the WebCam." << std::endl;
             exit(-1);
         }
         // send it through the network
         Mat inputBlob = blobFromImage(frame, scale, Size(W_in, H_in), Scalar(0, 0, 0), false, false);
         net.setInput(inputBlob);
-        Mat result = net.forward();
+        Mat *result = new Mat(net.forward());
+
+
         // the result is an array of "heatmaps", the probability of a body part being in location x,y
-        int H = result.size[2];
-        int W = result.size[3];
+        int H = result->size[2];
+        int W = result->size[3];
         // find the position of the body parts
         vector<Point> points(22);
-        for (int n=0; n<nparts; n++)
-        {
+        for (int n=0; n<nparts; n++) {
             // Slice heatmap of corresponding body's part.
-            Mat heatMap(H, W, CV_32F, result.ptr(0,n));
+            Mat heatMap(H, W, CV_32F, result->ptr(0,n));
             // 1 maximum per heatmap
             Point p(-1,-1),pm;
             double conf;
@@ -91,8 +84,8 @@ void Webcam::run() {
         // connect body parts and draw it !
         float SX = float(frame.cols) / W;
         float SY = float(frame.rows) / H;
-        for (int n=0; n<npairs; n++)
-        {
+
+        for (int n=0; n<npairs; n++) {
             // lookup 2 connected body/hand parts
             Point2f a = points[POSE_PAIRS[midx][n][0]];
             Point2f b = points[POSE_PAIRS[midx][n][1]];
@@ -105,11 +98,18 @@ void Webcam::run() {
             line(frame, a, b, Scalar(0,200,0), 2);
             circle(frame, a, 3, Scalar(0,0,200), -1);
             circle(frame, b, 3, Scalar(0,0,200), -1);
-        }
 
-        imshow("WebCam", frame);
-        if (waitKey(1) == 27) {
-            break;
+        }
+        flip(frame, frame, 1);
+        cvtColor(frame,frame,COLOR_BGR2RGB);
+        *img = QImage(frame.data,frame.cols,frame.rows,QImage::Format_RGB888);
+
+    } else {
+        if(window->read(frame)) {
+            flip(frame, frame, 1);
+            cvtColor(frame,frame,COLOR_BGR2RGB);
+            *img = QImage(frame.data,frame.cols,frame.rows,QImage::Format_RGB888);
         }
     }
+    return *img;
 }

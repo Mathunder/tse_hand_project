@@ -2,9 +2,10 @@
 #define WEBCAM_H
 
 #include "qimage.h"
+#include <future>
 #include <opencv2/opencv.hpp>
 #include <opencv2/highgui/highgui.hpp>
-#include <thread>
+#include <QFuture>
 #include <vector>
 #include <opencv2/dnn.hpp>
 #include <opencv2/imgproc.hpp>
@@ -18,15 +19,15 @@ class Webcam
 {
 public:
     Webcam();
-    void run();
-    static void analyze_hand(Webcam* webcam);
-    bool keepRunning = true; // Will be changed by the external program.
-    std::vector<std::thread> webcamThreads;
-    QImage toImg();
+    static void analyze_hand(Webcam *webcam);
+    QImage run(bool analyze_hand);
 
 private:
+    std::thread *thread_webcam;
     cv::VideoCapture *window;
     cv::Mat frame;
+    QFuture<void> future;
+    Mat *result;
     QImage *img;
     static Webcam* s_instance;
     Net net;
