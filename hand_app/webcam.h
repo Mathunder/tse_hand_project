@@ -5,7 +5,6 @@
 #include <future>
 #include <opencv2/opencv.hpp>
 #include <opencv2/highgui/highgui.hpp>
-#include <QFuture>
 #include <vector>
 #include <opencv2/dnn.hpp>
 #include <opencv2/imgproc.hpp>
@@ -21,12 +20,12 @@ public:
     Webcam();
     static void analyze_hand(Webcam *webcam);
     QImage run(bool analyze_hand);
+    static Webcam* getInstance();
+    bool finger[5];
 
 private:
-    std::thread *thread_webcam;
     cv::VideoCapture *window;
     cv::Mat frame;
-    QFuture<void> future;
     Mat *result;
     QImage *img;
     static Webcam* s_instance;
@@ -35,6 +34,11 @@ private:
     int W_in, H_in;
     float thresh, scale;
     int midx, npairs, nparts;
+
+    int sign;
+    float finger_length[5];
+
+
     const int POSE_PAIRS[3][20][2] = {
         {   // COCO body
             {1,2}, {1,5}, {2,3},
@@ -58,8 +62,6 @@ private:
             {0,17}, {17,18}, {18,19}, {19,20}   // small
         }
     };
-public:
-    static Webcam* getInstance();
 };
 
 #endif

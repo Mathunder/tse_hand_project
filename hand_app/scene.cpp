@@ -1,12 +1,15 @@
 #include "scene.h"
 #include "ui_scene.h"
 #include "hand.h"
+#include "webcam.h"
 
 Scene::Scene(QWidget *parent) : QOpenGLWidget(parent),
     ui(new Ui::Scene)
 {
     ui->setupUi(this);
 
+    webcam = new Webcam();
+    hand = new Hand();
 //    timer = new QTimer(this);
 //    connect(timer, SIGNAL(timeout()), this, SLOT(update()));
 //    timer->start(16); //60fps
@@ -37,16 +40,21 @@ void Scene::resizeGL(int width, int height) {
 
 void Scene::paintGL() {
     hand->drawBase();
-    hand->drawThumb(true);
-    hand->drawIndex(true);
-    hand->drawMiddleFinger(true);
-    hand->drawRingFinger(true);
-    hand->drawLittleFinger(true);
+    hand->drawThumb(webcam->finger[0]);
+    hand->drawIndex(webcam->finger[1]);
+    hand->drawMiddleFinger(webcam->finger[2]);
+    hand->drawRingFinger(webcam->finger[3]);
+    hand->drawLittleFinger(webcam->finger[4]);
     hand->rotate();
+}
+
+void Scene::setWebcam(Webcam *webcam) {
+    this->webcam = webcam;
 }
 
 Scene::~Scene()
 {
     delete ui;
-//    delete timer;
+    delete webcam;
+    delete hand;
 }

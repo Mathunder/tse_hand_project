@@ -58,6 +58,7 @@ MainWindow::~MainWindow()
 void MainWindow::update_scene()
 {
     ui->scene_widget->update();
+    ui->scene_widget->setWebcam(ui->camera_widget->getWebcam());
 }
 
 void MainWindow::update_camera()

@@ -6,7 +6,9 @@
 #include <QImage>
 
 QT_BEGIN_NAMESPACE
-namespace Ui { class Camera; }
+namespace Ui {
+class Camera;
+}
 QT_END_NAMESPACE
 
 class Camera : public QWidget
@@ -15,17 +17,20 @@ class Camera : public QWidget
 public:
     explicit Camera(QWidget *parent = nullptr);
     void displayCamera();
+    Webcam* getWebcam();
     ~Camera();
 
 private:
     Ui::Camera *ui;
     Webcam *webcam;
-    bool analyze = false;
+    bool analyze;
     unsigned int nb_threads = std::thread::hardware_concurrency();
     std::future<void> cameraThread;
 //    cv::VideoCapture *window;
 //    cv::Mat frame;
 //    QImage img;
+private slots:
+    void on_analyze_button_clicked();
 };
 
 #endif // CAMERA_H

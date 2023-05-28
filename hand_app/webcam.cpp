@@ -3,6 +3,9 @@
 #include <QtConcurrent/QtConcurrent>
 #include "qimage.h"
 #include <future>
+#include <QDebug>
+#include <opencv2/core/core.hpp>
+#include <opencv2/imgproc/imgproc.hpp>
 
 using namespace std;
 using namespace cv;
@@ -74,32 +77,56 @@ QImage Webcam::run(bool analyze_hand) {
             // Slice heatmap of corresponding body's part.
             Mat heatMap(H, W, CV_32F, result->ptr(0,n));
             // 1 maximum per heatmap
-            Point p(-1,-1),pm;
+            Point p(-1,-1), pm;
             double conf;
             minMaxLoc(heatMap, 0, &conf, 0, &pm);
             if (conf > thresh)
                 p = pm;
             points[n] = p;
+//            qDebug() << "x=" << points[n].x << " y=" << points[n].y;
         }
+//        qDebug() << "-----------------------";
         // connect body parts and draw it !
         float SX = float(frame.cols) / W;
         float SY = float(frame.rows) / H;
-
         for (int n=0; n<npairs; n++) {
             // lookup 2 connected body/hand parts
             Point2f a = points[POSE_PAIRS[midx][n][0]];
             Point2f b = points[POSE_PAIRS[midx][n][1]];
+
+            switch(n) {
+                case 3 :
+                    sign = (a.x - b.x <= 0) ? 1 : -1;
+                    finger_length[0] = sign * norm(a-b);
+                case 7 :
+                    sign = (a.y - b.y >= 0) ? 1 : -1;
+                    finger_length[1] = sign * norm(a-b);
+                case 11 :
+                    sign = (a.y - b.y >= 0) ? 1 : -1;
+                    finger_length[2] = sign * norm(a-b);
+                case 15 :
+                    sign = (a.y - b.y >= 0) ? 1 : -1;
+                    finger_length[3] = sign * norm(a-b);
+                case 19 :
+                    sign = (a.y - b.y >= 0) ? 1 : -1;
+                    finger_length[4] = sign * norm(a-b);
+            }
+
             // we did not find enough confidence before
             if (a.x<=0 || a.y<=0 || b.x<=0 || b.y<=0)
                 continue;
             // scale to image size
             a.x*=SX; a.y*=SY;
             b.x*=SX; b.y*=SY;
-            line(frame, a, b, Scalar(0,200,0), 2);
-            circle(frame, a, 3, Scalar(0,0,200), -1);
-            circle(frame, b, 3, Scalar(0,0,200), -1);
-
+            line(frame, a, b, Scalar(0,200,0), 5);
+            circle(frame, a, 3, Scalar(0,0,200), 2);
+            circle(frame, b, 3, Scalar(0,0,200), 2);
         }
+
+        for(int i=0; i < (int) std::size(finger_length); i++) {
+            finger[i] = (finger_length[i] > 0.0) ? true : false;
+        }
+
         flip(frame, frame, 1);
         cvtColor(frame,frame,COLOR_BGR2RGB);
         *img = QImage(frame.data,frame.cols,frame.rows,QImage::Format_RGB888);

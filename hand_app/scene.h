@@ -5,6 +5,7 @@
 #include <GL/glu.h>
 #include "hand.h"
 #include <QTimer>
+#include "webcam.h"
 
 namespace Ui {
 class Scene;
@@ -27,11 +28,13 @@ protected:
 
 public:
     explicit Scene(QWidget *parent = nullptr);
+    void setWebcam(Webcam *webcam);
     ~Scene();
 
 private:
     Ui::Scene *ui;
-    Hand *hand = new Hand();
+    Hand *hand;
+    Webcam *webcam;
 //    QTimer *timer;
 //public slots:
 //    void update();
