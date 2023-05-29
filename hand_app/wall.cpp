@@ -7,7 +7,7 @@
 #include <QtWidgets>
 
 Wall::Wall(){
-    position = new float(-50.0f);
+    position = new float(-150.0f);
 }
 
 void Wall::drawWallBase(){

@@ -21,7 +21,7 @@ void Scene::initializeGL() {
     // Définition de la matrice de projection pour définir la perspective
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    gluPerspective(70.0f, 511.0f/271.0f, 2.0f, 150.0f);
+    gluPerspective(70.0f, 511.0f/271.0f, 2.0f, 300.0f);
 
     // Définition de la matrice de modélisation-visualisation pour définir la camera
     glMatrixMode(GL_MODELVIEW);
@@ -55,8 +55,8 @@ void Scene::paintGL() {
     wall->drawWallRingFinger(false);
     wall->drawWallLittleFinger(false, false);
 
-    if(*wall->getPosition() > 10.f)
-        wall->setPosition(-30.f);
+    if(*wall->getPosition() > 30.f)
+        wall->setPosition(-150.f);
 }
 
 void Scene::setWebcam(Webcam *webcam) {

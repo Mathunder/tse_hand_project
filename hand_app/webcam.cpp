@@ -98,6 +98,7 @@ void Webcam::analyze_hand() {
             finger[i] = (finger_length[i] > 0.0) ? true : false;
         }
     });
+    QThread::msleep(100);
 }
 
 QImage Webcam::run() {
