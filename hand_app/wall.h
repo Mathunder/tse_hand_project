@@ -12,6 +12,7 @@ private:
     GLfloat dark_grey[3] = {0.3f, 0.3f, 0.3f};
     GLfloat black[3] = {0.f, 0.f, 0.f};
     GLfloat blue[3] = {0.f, 0.f, 1.f};
+    float *position;
 public:
     Wall();
     void drawWallBase();
@@ -20,6 +21,8 @@ public:
     void drawWallMiddleFinger(boolean middleWall_is_drawn, boolean indexWall_is_drawn, boolean ringWall_is_drawn);
     void drawWallRingFinger(boolean is_drawn);
     void drawWallLittleFinger(boolean littleWallis_drawn, boolean ringWall_is_drawn);
+    void setPosition(float pos);
+    float* getPosition();
     void translate();
     Cube cube;
 };
