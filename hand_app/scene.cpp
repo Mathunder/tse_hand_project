@@ -10,10 +10,6 @@ Scene::Scene(QWidget *parent) : QOpenGLWidget(parent),
 
     webcam = new Webcam();
     hand = new Hand();
-//    timer = new QTimer(this);
-//    connect(timer, SIGNAL(timeout()), this, SLOT(update()));
-//    timer->start(16); //60fps
-
 }
 
 void Scene::initializeGL() {

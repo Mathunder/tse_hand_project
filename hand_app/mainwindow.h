@@ -4,6 +4,7 @@
 
 #include <QMainWindow>
 #include <QTimer>
+#include <QFuture>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -21,6 +22,8 @@ public:
 private:
     Ui::MainWindow *ui;
     QTimer *timer;
+    QFuture<void> future_scene;
+    QFuture<void> future_camera;
 
 private slots:
     void update_scene();

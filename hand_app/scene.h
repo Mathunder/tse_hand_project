@@ -35,9 +35,6 @@ private:
     Ui::Scene *ui;
     Hand *hand;
     Webcam *webcam;
-//    QTimer *timer;
-//public slots:
-//    void update();
 };
 
 #endif // SCENE_H

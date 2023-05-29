@@ -25,10 +25,7 @@ private:
     Webcam *webcam;
     bool analyze;
     unsigned int nb_threads = std::thread::hardware_concurrency();
-    std::future<void> cameraThread;
-//    cv::VideoCapture *window;
-//    cv::Mat frame;
-//    QImage img;
+
 private slots:
     void on_analyze_button_clicked();
 };

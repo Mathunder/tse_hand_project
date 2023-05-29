@@ -18,8 +18,9 @@ class Webcam
 {
 public:
     Webcam();
-    static void analyze_hand(Webcam *webcam);
-    QImage run(bool analyze_hand);
+    ~Webcam();
+    QImage run();
+    void analyze_hand();
     static Webcam* getInstance();
     bool finger[5];
 
@@ -30,12 +31,15 @@ private:
     QImage *img;
     static Webcam* s_instance;
     Net net;
-    String modelTxt, modelBin, dataset;
-    int W_in, H_in;
-    float thresh, scale;
+    String modelTxt = samples::findFile("../hand_app/pose_iter_102000.caffemodel");
+    String modelBin = samples::findFile("../hand_app/pose_deploy.prototxt");
+    String dataset = "HAND";
+    int W_in = 368;
+    int H_in = 368;
+    float thresh = 0.1;
+    float scale  = 0.003922;
     int midx, npairs, nparts;
 
-    int sign;
     float finger_length[5];
 
 

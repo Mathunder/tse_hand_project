@@ -1,6 +1,9 @@
 #include "camera.h"
 #include "ui_camera.h"
 #include <QTimer>
+#include <QFuture>
+#include <QtConcurrent/QtConcurrent>
+#include <QFutureWatcher>
 
 
 Camera::Camera(QWidget *parent) : QWidget(parent),
@@ -14,8 +17,7 @@ Camera::Camera(QWidget *parent) : QWidget(parent),
 
 void Camera::displayCamera() {
     //Display of the camera
-
-    ui->camera_label->setPixmap(QPixmap::fromImage(webcam->run(analyze)));
+    ui->camera_label->setPixmap(QPixmap::fromImage(webcam->run()));
 }
 
 Camera::~Camera()
@@ -26,7 +28,9 @@ Camera::~Camera()
 
 void Camera::on_analyze_button_clicked()
 {
-    analyze = !analyze;
+    analyze = true;
+    if(analyze)
+        webcam->analyze_hand();
 }
 
 Webcam* Camera::getWebcam() {

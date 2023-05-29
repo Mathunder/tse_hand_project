@@ -2,7 +2,6 @@
 #include <QFuture>
 #include <QtConcurrent/QtConcurrent>
 #include "qimage.h"
-#include <future>
 #include <QDebug>
 #include <opencv2/core/core.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
@@ -11,27 +10,9 @@ using namespace std;
 using namespace cv;
 
 Webcam::Webcam() {
-//    CommandLineParser parser(argc, argv,
-//                             "{ h help           | false     | print this help message }"
-//                             "{ p proto          | C:/Users/Matthieu/Documents/Ecole/TelecomSaintEtienne/FISE2/S8/Bibliotheque_de_developpement/TestOpenCV/pose_deploy.prototxt | (required) model configuration, e.g. hand/pose.prototxt }"
-//                             "{ m model          | C:/Users/Matthieu/Documents/Ecole/TelecomSaintEtienne/FISE2/S8/Bibliotheque_de_developpement/TestOpenCV/pose_iter_102000.caffemodel | (required) model weights, e.g. hand/pose_iter_102000.caffemodel }"
-//                             "{ i image          | C:/Users/Matthieu/Documents/Ecole/TelecomSaintEtienne/FISE2/S8/Bibliotheque_de_developpement/TestOpenCV/hand3.png | (required) path to image file (containing a single person, or hand) }"
-//                             "{ d dataset        | HAND      | specify what kind of model was trained. It could be (COCO, MPI, HAND) depends on dataset. }"
-//                             "{ width            |  368      | Preprocess input image by resizing to a specific width. }"
-//                             "{ height           |  368      | Preprocess input image by resizing to a specific height. }"
-//                             "{ t threshold      |  0.1      | threshold or confidence value for the heatmap }"
-//                             "{ s scale          |  0.003922 | scale for blob }"
-//                             );
-    modelTxt = samples::findFile("../hand_app/pose_iter_102000.caffemodel");
-    modelBin = samples::findFile("../hand_app/pose_deploy.prototxt");
-    dataset = "HAND";
-    W_in = 368;
-    H_in = 368;
-    thresh = 0.1;
-    scale  = 0.003922;
-    if (!dataset.compare("HAND")) {  midx = 2; npairs = 20; nparts = 22; }
-    else
-    {
+    if (!dataset.compare("HAND")) {
+        midx = 2; npairs = 20; nparts = 22;
+    } else {
         std::cerr << "Can't interpret dataset parameter: " << dataset << std::endl;
         exit(-1);
     }
@@ -51,12 +32,8 @@ Webcam* Webcam::getInstance() {
     return s_instance;
 }
 
-void Webcam::analyze_hand(Webcam *webcam) {
-    webcam->run(true);
-}
-
-QImage Webcam::run(bool analyze_hand) {
-    if(analyze_hand) {
+void Webcam::analyze_hand() {
+    QFuture<void> future = QtConcurrent::run([this]() {
         *window >> frame;
         if (frame.empty()) {
             std::cerr << "Can't read image from the WebCam." << std::endl;
@@ -66,7 +43,6 @@ QImage Webcam::run(bool analyze_hand) {
         Mat inputBlob = blobFromImage(frame, scale, Size(W_in, H_in), Scalar(0, 0, 0), false, false);
         net.setInput(inputBlob);
         Mat *result = new Mat(net.forward());
-
 
         // the result is an array of "heatmaps", the probability of a body part being in location x,y
         int H = result->size[2];
@@ -83,33 +59,28 @@ QImage Webcam::run(bool analyze_hand) {
             if (conf > thresh)
                 p = pm;
             points[n] = p;
-//            qDebug() << "x=" << points[n].x << " y=" << points[n].y;
         }
-//        qDebug() << "-----------------------";
+
         // connect body parts and draw it !
         float SX = float(frame.cols) / W;
         float SY = float(frame.rows) / H;
+
         for (int n=0; n<npairs; n++) {
             // lookup 2 connected body/hand parts
             Point2f a = points[POSE_PAIRS[midx][n][0]];
             Point2f b = points[POSE_PAIRS[midx][n][1]];
 
             switch(n) {
-                case 3 :
-                    sign = (a.x - b.x <= 0) ? 1 : -1;
-                    finger_length[0] = sign * norm(a-b);
-                case 7 :
-                    sign = (a.y - b.y >= 0) ? 1 : -1;
-                    finger_length[1] = sign * norm(a-b);
-                case 11 :
-                    sign = (a.y - b.y >= 0) ? 1 : -1;
-                    finger_length[2] = sign * norm(a-b);
-                case 15 :
-                    sign = (a.y - b.y >= 0) ? 1 : -1;
-                    finger_length[3] = sign * norm(a-b);
-                case 19 :
-                    sign = (a.y - b.y >= 0) ? 1 : -1;
-                    finger_length[4] = sign * norm(a-b);
+            case 3 :
+                finger_length[0] = (a.x - b.x <= 0) ? 1 : -1;
+            case 7 :
+                finger_length[1] = (a.y - b.y >= 0) ? 1 : -1;
+            case 11 :
+                finger_length[2] = (a.y - b.y >= 0) ? 1 : -1;
+            case 15 :
+                finger_length[3] = (a.y - b.y >= 0) ? 1 : -1;
+            case 19 :
+                finger_length[4] = (a.y - b.y >= 0) ? 1 : -1;
             }
 
             // we did not find enough confidence before
@@ -118,25 +89,29 @@ QImage Webcam::run(bool analyze_hand) {
             // scale to image size
             a.x*=SX; a.y*=SY;
             b.x*=SX; b.y*=SY;
-            line(frame, a, b, Scalar(0,200,0), 5);
-            circle(frame, a, 3, Scalar(0,0,200), 2);
-            circle(frame, b, 3, Scalar(0,0,200), 2);
+    //        line(frame, a, b, Scalar(0,200,0), 5);
+    //        circle(frame, a, 3, Scalar(0,0,200), 2);
+    //        circle(frame, b, 3, Scalar(0,0,200), 2);
         }
 
         for(int i=0; i < (int) std::size(finger_length); i++) {
             finger[i] = (finger_length[i] > 0.0) ? true : false;
         }
+    });
+}
 
+QImage Webcam::run() {
+    if(window->read(frame)) {
         flip(frame, frame, 1);
         cvtColor(frame,frame,COLOR_BGR2RGB);
         *img = QImage(frame.data,frame.cols,frame.rows,QImage::Format_RGB888);
-
-    } else {
-        if(window->read(frame)) {
-            flip(frame, frame, 1);
-            cvtColor(frame,frame,COLOR_BGR2RGB);
-            *img = QImage(frame.data,frame.cols,frame.rows,QImage::Format_RGB888);
-        }
     }
+
     return *img;
+}
+
+Webcam::~Webcam() {
+    delete window;
+    delete img;
+    delete result;
 }
