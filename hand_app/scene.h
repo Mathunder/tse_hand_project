@@ -6,6 +6,7 @@
 #include "hand.h"
 #include <QTimer>
 #include "webcam.h"
+#include "wall.h"
 
 namespace Ui {
 class Scene;
@@ -34,6 +35,7 @@ public:
 private:
     Ui::Scene *ui;
     Hand *hand;
+    Wall *wall;
     Webcam *webcam;
 };
 

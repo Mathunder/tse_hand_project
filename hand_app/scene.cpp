@@ -10,6 +10,7 @@ Scene::Scene(QWidget *parent) : QOpenGLWidget(parent),
 
     webcam = new Webcam();
     hand = new Hand();
+    wall = new Wall();
 }
 
 void Scene::initializeGL() {
@@ -41,7 +42,14 @@ void Scene::paintGL() {
     hand->drawMiddleFinger(webcam->finger[2]);
     hand->drawRingFinger(webcam->finger[3]);
     hand->drawLittleFinger(webcam->finger[4]);
-    hand->rotate();
+//    hand->rotate();
+    wall->drawWallBase();
+    wall->drawWallThumb(false);
+    wall->drawWallIndex(false);
+    wall->drawWallMiddleFinger(false, false, false);
+    wall->drawWallRingFinger(false);
+    wall->drawWallLittleFinger(false, false);
+    wall->translate();
 }
 
 void Scene::setWebcam(Webcam *webcam) {
@@ -53,4 +61,5 @@ Scene::~Scene()
     delete ui;
     delete webcam;
     delete hand;
+    delete wall;
 }

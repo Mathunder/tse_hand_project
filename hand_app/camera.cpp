@@ -6,8 +6,7 @@
 #include <QFutureWatcher>
 
 
-Camera::Camera(QWidget *parent) : QWidget(parent),
-    ui(new Ui::Camera)
+Camera::Camera(QWidget *parent) : QWidget(parent), ui(new Ui::Camera)
 {
     ui->setupUi(this);
     webcam = new Webcam();
