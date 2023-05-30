@@ -212,7 +212,7 @@ void Hand::drawRingFinger(boolean is_drawn) {
 void Hand::drawLittleFinger(boolean is_drawn) {
     if(is_drawn) {
         // Intérieur du doigt
-        for(int j=7; j<=9; j++) {
+        for(int j=7; j<=10; j++) {
             for(int i=5; i<=6; i++)
                 cube->drawCube(i, j, 0.f, light_grey);
         }
@@ -229,10 +229,6 @@ void Hand::drawLittleFinger(boolean is_drawn) {
 //        cube->drawCube(5, 7, 0.f, black);
 //        cube->drawCube(6, 6, 0.f, black);
     }
-}
-
-void Hand::rotate() {
-    glRotatef(6.0f, .0f, 1.0f, .0f);
 }
 
 Hand::~Hand() {

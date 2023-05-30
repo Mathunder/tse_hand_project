@@ -12,8 +12,9 @@ private:
     GLfloat dark_grey[3] = {0.3f, 0.3f, 0.3f};
     GLfloat black[3] = {0.f, 0.f, 0.f};
     GLfloat blue[3] = {0.f, 0.f, 1.f};
-    float *position;
+    float position;
     Cube *cube;
+
 
 public:
     Wall();
@@ -26,8 +27,17 @@ public:
     void drawWallRingFinger(boolean is_drawn);
     void drawWallLittleFinger(boolean littleWallis_drawn, boolean ringWall_is_drawn);
     void setPosition(float pos);
-    float* getPosition();
-
+    float getPosition();
+    bool configuration[8][5] = {
+        {true, true, true, true, true},
+        {false, true, true, true, true},
+        {true, true, false, false, false},
+        {true, true, true, false, false},
+        {false, false, false, false, false},
+        {false, true, true, true, false},
+        {false, true, false, false, false},
+        {true, true, false, false, true}
+    };
 };
 
 #endif // WALL_H

@@ -22,7 +22,7 @@ public:
     QImage run();
     void analyze_hand();
     static Webcam* getInstance();
-    bool finger[5];
+    bool finger[5] = {true, true, true, true, true};
 
 private:
     cv::VideoCapture *window;

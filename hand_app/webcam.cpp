@@ -89,9 +89,9 @@ void Webcam::analyze_hand() {
             // scale to image size
             a.x*=SX; a.y*=SY;
             b.x*=SX; b.y*=SY;
-    //        line(frame, a, b, Scalar(0,200,0), 5);
-    //        circle(frame, a, 3, Scalar(0,0,200), 2);
-    //        circle(frame, b, 3, Scalar(0,0,200), 2);
+//            line(frame, a, b, Scalar(0,200,0), 5);
+//            circle(frame, a, 3, Scalar(0,0,200), 2);
+//            circle(frame, b, 3, Scalar(0,0,200), 2);
         }
 
         for(int i=0; i < (int) std::size(finger_length); i++) {

@@ -24,10 +24,13 @@ private:
     QTimer *timer;
     QFuture<void> future_scene;
     QFuture<void> future_camera;
+    int score;
 
 private slots:
     void update_scene();
     void update_camera();
+    void update_lost();
+    void update_points();
 };
 
 #endif // MAINWINDOW_H

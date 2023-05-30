@@ -11,6 +11,7 @@ Scene::Scene(QWidget *parent) : QOpenGLWidget(parent),
     webcam = new Webcam();
     hand = new Hand();
     wall = new Wall();
+    one_by_one = true;
 }
 
 void Scene::initializeGL() {
@@ -26,15 +27,15 @@ void Scene::initializeGL() {
     // Définition de la matrice de modélisation-visualisation pour définir la camera
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
-    gluLookAt(-10.0f, 15.0f, 20.0f, 0.f, 5.f, 0.f, 0.f, 1.f, 0.f);
+    gluLookAt(-12.0f, 25.0f, 20.0f, 0.f, 10.f, 0.f, 0.f, 1.f, 0.f);
     glPushMatrix();
 
     glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
 }
 
-void Scene::resizeGL(int width, int height) {
+//void Scene::resizeGL(int width, int height) {
 
-}
+//}
 
 void Scene::paintGL() {
     glPopMatrix();
@@ -44,19 +45,44 @@ void Scene::paintGL() {
     hand->drawMiddleFinger(webcam->finger[2]);
     hand->drawRingFinger(webcam->finger[3]);
     hand->drawLittleFinger(webcam->finger[4]);
-//    hand->rotate();
     glPopMatrix();
 
-    wall->setPosition(*wall->getPosition() + 2.f);
-    wall->drawWallBase();
-    wall->drawWallThumb(false);
-    wall->drawWallIndex(false);
-    wall->drawWallMiddleFinger(false, false, false);
-    wall->drawWallRingFinger(false);
-    wall->drawWallLittleFinger(false, false);
-
-    if(*wall->getPosition() > 30.f)
+    if(wall->getPosition() > 30.f) {
+        std::random_device rd;
+        std::mt19937 gen(rd());
+        std::uniform_int_distribution<> dis(0, 7);
+        temp = dis(gen);
+        for(int i=0; i < 5; i++)
+            this->wall_finger[i] = !(wall->configuration[temp][i]);
         wall->setPosition(-150.f);
+        one_by_one = true;
+    }
+    wall->setPosition(wall->getPosition() + 2.f);
+    wall->drawWallBase();
+    wall->drawWallThumb(this->wall_finger[0]);
+    wall->drawWallIndex(this->wall_finger[1]);
+    wall->drawWallMiddleFinger(this->wall_finger[2], this->wall_finger[1], this->wall_finger[3]);
+    wall->drawWallRingFinger(this->wall_finger[3]);
+    wall->drawWallLittleFinger(this->wall_finger[4], this->wall_finger[3]);
+
+    //Checking if there is a collision
+    if(wall->getPosition() > -3.f && wall->getPosition() < 2.f && one_by_one) {
+        bool collision = false;
+        for(int i=0; i < 5; i++) {
+            if(this->wall_finger[i] == webcam->finger[i]) {
+                collision = true;
+                break;
+            }
+        }
+        if(collision) {
+            std::cout << "collision" << std::endl;
+            emit collisionOccured();
+        } else {
+            std::cout << "ok" << std::endl;
+            emit wallPassed();
+        }
+        one_by_one = false;
+    }
 }
 
 void Scene::setWebcam(Webcam *webcam) {

@@ -21,8 +21,8 @@ protected:
     // Fonction d'initialisation
     void initializeGL();
 
-    // Fonction de redimensionnement
-    void resizeGL(int width, int height);
+//    // Fonction de redimensionnement
+//    void resizeGL(int width, int height);
 
     // Fonction d'affichage
     void paintGL();
@@ -37,6 +37,13 @@ private:
     Hand *hand;
     Wall *wall;
     Webcam *webcam;
+    bool wall_finger[5] = {true, true, true, true, true};
+    int temp = 0;
+    bool one_by_one;
+
+signals:
+    void collisionOccured();
+    void wallPassed();
 };
 
 #endif // SCENE_H
