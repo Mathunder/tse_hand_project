@@ -13,8 +13,12 @@ private:
     GLfloat black[3] = {0.f, 0.f, 0.f};
     GLfloat blue[3] = {0.f, 0.f, 1.f};
     float *position;
+    Cube *cube;
+
 public:
     Wall();
+    ~Wall();
+
     void drawWallBase();
     void drawWallThumb(boolean is_drawn);
     void drawWallIndex(boolean is_drawn);
@@ -23,7 +27,7 @@ public:
     void drawWallLittleFinger(boolean littleWallis_drawn, boolean ringWall_is_drawn);
     void setPosition(float pos);
     float* getPosition();
-    Cube cube;
+
 };
 
 #endif // WALL_H

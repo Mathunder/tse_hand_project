@@ -20,7 +20,7 @@ public:
     void drawRingFinger(boolean is_drawn);
     void drawLittleFinger(boolean is_drawn);
     void rotate();
-    Cube cube;
+    Cube *cube;
 };
 
 #endif // HAND_H

@@ -10,9 +10,10 @@ private:
     GLfloat dark_grey[3] = {0.3f, 0.3f, 0.3f};
     GLfloat black[3] = {0.f, 0.f, 0.f};
     GLfloat blue[3] = {0.f, 0.f, 1.f};
+    float depth;
 public:
-    Cube();
-
+    Cube(float depth);
+    ~Cube();
     void drawCube(float bottom_left_corner_x, float bottom_left_corner_y, float bottom_left_corner_z, GLfloat color[]);
 };
 
