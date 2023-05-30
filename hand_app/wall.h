@@ -23,7 +23,6 @@ public:
     void drawWallLittleFinger(boolean littleWallis_drawn, boolean ringWall_is_drawn);
     void setPosition(float pos);
     float* getPosition();
-    void translate();
     Cube cube;
 };
 

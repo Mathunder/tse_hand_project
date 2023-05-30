@@ -320,8 +320,4 @@ void Wall::setPosition(float pos) {
     *this->position = pos;
 }
 
-void Wall::translate() {
-    glTranslatef(0.f, 0.f, 2.f);
-}
-
 #endif // WALL_CPP
