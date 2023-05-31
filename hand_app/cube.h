@@ -15,6 +15,7 @@ public:
     Cube(float depth);
     ~Cube();
     void drawCube(float bottom_left_corner_x, float bottom_left_corner_y, float bottom_left_corner_z, GLfloat color[]);
+    void drawCubeTexture(float bottom_left_corner_x, float bottom_left_corner_y, float bottom_left_corner_z, GLfloat color[], GLuint texture);
 };
 
 #endif // CUBE_H

@@ -67,3 +67,6 @@ LIBS += -L$$(OPENCV_DIR)\lib \
     -lopencv_features2d470 \
     -lopencv_calib3d470 \
     -lopencv_dnn470
+
+RESOURCES += \
+    textures.qrc

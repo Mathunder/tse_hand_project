@@ -15,10 +15,72 @@ Wall::~Wall() {
 }
 
 void Wall::drawWallBase(){
+    // Texture
+    glEnable(GL_TEXTURE_2D);
+    QImage logo_1(":/res/logo/logo_tse_1.png");
+    logo_1 = logo_1.mirrored(false, true);
+    logo_1 = logo_1.convertToFormat(QImage::Format_RGBA8888);
+    QImage logo_2(":/res/logo/logo_tse_2.png");
+    logo_2 = logo_2.mirrored(false, true);
+    logo_2 = logo_2.convertToFormat(QImage::Format_RGBA8888);
+    QImage logo_3(":/res/logo/logo_tse_3.png");
+    logo_3 = logo_3.mirrored(false, true);
+    logo_3 = logo_3.convertToFormat(QImage::Format_RGBA8888);
+    QImage logo_4(":/res/logo/logo_tse_4.png");
+    logo_4 = logo_4.mirrored(false, true);
+    logo_4 = logo_4.convertToFormat(QImage::Format_RGBA8888);
+
+    GLuint * logo_texture = new GLuint[4];
+    //    GLuint logo_texture;
+    glGenTextures(4, logo_texture);
+    glBindTexture(GL_TEXTURE_2D, logo_texture[0]);
+    glTexImage2D(GL_TEXTURE_2D, 0, 4, logo_1.width(), logo_1.height(), 0, GL_RGBA, GL_UNSIGNED_BYTE, logo_1.bits());
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+    glBindTexture(GL_TEXTURE_2D, logo_texture[1]);
+    glTexImage2D(GL_TEXTURE_2D, 0, 4, logo_2.width(), logo_2.height(), 0, GL_RGBA, GL_UNSIGNED_BYTE, logo_2.bits());
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+    glBindTexture(GL_TEXTURE_2D, logo_texture[2]);
+    glTexImage2D(GL_TEXTURE_2D, 0, 4, logo_3.width(), logo_3.height(), 0, GL_RGBA, GL_UNSIGNED_BYTE, logo_3.bits());
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+    glBindTexture(GL_TEXTURE_2D, logo_texture[3]);
+    glTexImage2D(GL_TEXTURE_2D, 0, 4, logo_4.width(), logo_4.height(), 0, GL_RGBA, GL_UNSIGNED_BYTE, logo_4.bits());
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+    //    glEnable(GL_TEXTURE_2D); // Activer le texteuring
+    //    glBindTexture(GL_TEXTURE_2D, logo_texture); // Sélectionner la texture
+    //    glBegin(GL_QUADS);
+    //    glTexCoord2f(0.0f, 0.0f); glVertex3f(-9.0f, -9.0f, 1.0f);      // Bottom-left vertex with texture
+    //    glTexCoord2f(1.0f, 0.0f); glVertex3f(-9.0f, -8.0f, 1.0f);    // Bottom-right vertex with texture
+    //    glTexCoord2f(1.0f, 1.0f); glVertex3f(-8.0f, -8.0f, 1.0f);    // Top-right vertex with texture
+    //    glTexCoord2f(0.0f, 1.0f); glVertex3f(-9.0f, -8.0f, 1.0f);    // Top-left vertex with texture
+
+    //    glDisable(GL_TEXTURE_2D);
+
+
+    cube->drawCubeTexture(-15, 18, position, grey, logo_texture[0]);
+    cube->drawCubeTexture(-14, 18, position, grey, logo_texture[1]);
+    cube->drawCubeTexture(-14, 17, position, grey, logo_texture[2]);
+    cube->drawCubeTexture(-15, 17, position, grey, logo_texture[3]);
+    glDisable(GL_TEXTURE_2D);
+
+
+
     // Parties du mur sur les côtés de la main
 
-    // Colonnes pour x de -15 à -10
-    for(int i=-15; i<=-10; i++)
+    // Colonnes pour x=-15 et x=-14
+    for(int j=-15; j<=16; j++)
+        cube->drawCube(-15, j, position, grey);
+    for(int j=-15; j<=16; j++)
+        cube->drawCube(-14, j, position, grey);
+    // Colonnes pour x de -13 à -10
+    for(int i=-13; i<=-10; i++)
         for(int j=-15; j<=18; j++)
             cube->drawCube(i, j, position, grey);
     // Colonnes pour x de 8 à 15
