@@ -19,6 +19,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
     connect(ui->scene_widget, SIGNAL(collisionOccured()), this, SLOT(update_lost()));
     connect(ui->scene_widget, SIGNAL(wallPassed()), this, SLOT(update_points()));
+    connect(ui->scene_widget, SIGNAL(analyze()), this, SLOT(analyze()));
 }
 
 MainWindow::~MainWindow() {
@@ -35,6 +36,10 @@ void MainWindow::update_scene() {
 
 void MainWindow::update_camera() {
     ui->camera_widget->displayCamera();
+}
+
+void MainWindow::analyze() {
+    ui->camera_widget->getWebcam()->analyze_hand();
 }
 
 void MainWindow::update_lost() {

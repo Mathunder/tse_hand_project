@@ -31,6 +31,7 @@ private slots:
     void update_camera();
     void update_lost();
     void update_points();
+    void analyze();
 };
 
 #endif // MAINWINDOW_H

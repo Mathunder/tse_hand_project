@@ -37,13 +37,17 @@ private:
     Hand *hand;
     Wall *wall;
     Webcam *webcam;
+    Cube *cube;
     bool wall_finger[5] = {true, true, true, true, true};
     int temp = 0;
     bool one_by_one;
+    bool has_been_analyzed;
+    float compteur;
 
 signals:
     void collisionOccured();
     void wallPassed();
+    void analyze();
 };
 
 #endif // SCENE_H
