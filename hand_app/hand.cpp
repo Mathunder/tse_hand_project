@@ -23,54 +23,54 @@ void Hand::drawBase() {
 
 
     //Colonne 1
-    cube->drawCube(-7, 0, 0.f, grey);
+    cube->drawCube(-7, 0, 0.f, grey, false);
 
     //Colonne 2
     for(int i=-2; i<=1; i++)
-        cube->drawCube(-6, i, 0.f, grey);
+        cube->drawCube(-6, i, 0.f, grey, false);
 
     //Colone 3
     for(int i=-4; i<=-1; i++)
-        cube->drawCube(-5, i, 0.f, grey);
+        cube->drawCube(-5, i, 0.f, grey, false);
 
     //Colonne 4 & 5
     for(int j=-4; j<=-3; j++) {
         for(int i=-6; i<=7; i++)
-            cube->drawCube(j, i, 0.f, grey);
+            cube->drawCube(j, i, 0.f, grey, false);
     }
-    cube->drawCube(-3, -7, 0.f, grey);
+    cube->drawCube(-3, -7, 0.f, grey, false);
 
     //Colonne 6
     for(int i=-7; i<=3; i++)
-        cube->drawCube(-2, i, 0.f, grey);
+        cube->drawCube(-2, i, 0.f, grey, false);
 
     //Colonne 7 & 8
     for(int j=-1; j<=0; j++) {
         for(int i=-7; i<=8; i++)
-            cube->drawCube(j, i, 0.f, grey);
+            cube->drawCube(j, i, 0.f, grey, false);
     }
 
     //Colonne 9
     for(int i=-7; i<=3; i++)
-        cube->drawCube(1, i, 0.f, grey);
+        cube->drawCube(1, i, 0.f, grey, false);
 
     //Colonne 10 & 11
     for(int j=2; j<=3; j++) {
         for(int i=-7; i<=7; i++)
-            cube->drawCube(j, i, 0.f, grey);
+            cube->drawCube(j, i, 0.f, grey, false);
     }
 
     //Colonne 12
     for(int i=-7; i<=3; i++)
-        cube->drawCube(4, i, 0.f, grey);
+        cube->drawCube(4, i, 0.f, grey, false);
 
     //Colonne 13
     for(int i=-4; i<=6; i++)
-        cube->drawCube(5, i, 0.f, grey);
+        cube->drawCube(5, i, 0.f, grey, false);
 
     //Colonne 14
     for(int i=-2; i<=5; i++)
-        cube->drawCube(6, i, 0.f, grey);
+        cube->drawCube(6, i, 0.f, grey, false);
 
 
     //Contour de la main --------------
@@ -129,7 +129,7 @@ void Hand::drawThumb(boolean is_drawn) {
         //Interieur pouce
         for(int j=1; j<=2; j++) {
             for(int i=-8; i<=-7; i++)
-                cube->drawCube(i, j, 0.f, light_grey);
+                cube->drawCube(i, j, 0.f, light_grey, false);
         }
 
         //Contour pouce
@@ -142,7 +142,7 @@ void Hand::drawThumb(boolean is_drawn) {
 //        cube->drawCube(-7, -1, 0.f, black);
 
     } else {
-        cube->drawCube(-7, -1, 0.f, light_grey);
+        cube->drawCube(-7, -1, 0.f, light_grey, false);
 //        cube->drawCube(-8, -1, 0.f, black);
 //        cube->drawCube(-8, 0, 0.f, black);
 //        cube->drawCube(-7, 1, 0.f, black);
@@ -154,7 +154,7 @@ void Hand::drawIndex(boolean is_drawn) {
         //Intérieur index
         for(int j=8; j<=12; j++) {
             for(int i=-4; i<=-3; i++)
-                cube->drawCube(i, j, 0.f, light_grey);
+                cube->drawCube(i, j, 0.f, light_grey, false);
         }
         //Contour index
 //        for(int i=8; i<=12; i++)
@@ -174,7 +174,7 @@ void Hand::drawMiddleFinger(boolean is_drawn) {
         // Intérieur majeur
         for(int j=9; j<=14; j++) {
             for(int i=-1; i<=0; i++)
-                cube->drawCube(i, j, 0.f, light_grey);
+                cube->drawCube(i, j, 0.f, light_grey, false);
         }
         // Contour majeur
 //        for(int i=10; i<=14; i++)
@@ -194,7 +194,7 @@ void Hand::drawRingFinger(boolean is_drawn) {
         // Intérieur du doigt
         for(int j=8; j<=12; j++) {
             for(int i=2; i<=3; i++)
-                cube->drawCube(i, j, 0.f, light_grey);
+                cube->drawCube(i, j, 0.f, light_grey, false);
         }
         // Contour du doigt
 //        for(int i=9; i<=12; i++)
@@ -214,9 +214,9 @@ void Hand::drawLittleFinger(boolean is_drawn) {
         // Intérieur du doigt
         for(int j=7; j<=10; j++) {
             for(int i=5; i<=6; i++)
-                cube->drawCube(i, j, 0.f, light_grey);
+                cube->drawCube(i, j, 0.f, light_grey, false);
         }
-        cube->drawCube(6, 6, 0.f, light_grey);
+        cube->drawCube(6, 6, 0.f, light_grey, false);
         // Contour du doigt
 //        cube->drawCube(4, 8, 0.f, black);
 //        cube->drawCube(4, 9, 0.f, black);

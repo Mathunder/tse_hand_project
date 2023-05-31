@@ -23,7 +23,7 @@ void Scene::initializeGL() {
     glEnable(GL_LIGHT0);
 
     // Déclaration position, direction et couleur de la lumière (directionnelle)
-    GLfloat lightPosition[] = { 1.0f, 1.0f, 1.0f, 0.0f };
+    GLfloat lightPosition[] = { -1.0f, -1.0f, 1.0f, 0.0f };
     glLightfv(GL_LIGHT0, GL_POSITION, lightPosition);
 //    GLfloat colorAmbiante[] = { 1.0f, 1.0f, 1.0f, 1.0f }; // Blanc ambiant
 //    glLightfv(GL_LIGHT0, GL_AMBIENT, colorAmbiante);
