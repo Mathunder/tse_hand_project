@@ -75,7 +75,7 @@ void Scene::paintGL() {
     if((wall->getPosition() > -120.f) && (wall->getPosition() < -50.f)) {
         GLfloat green[3] = {.0f + compteur, 1.f, .0f};
         hand->setColor(green);
-        compteur += .05f;
+        compteur += .06f;
         if(wall->getPosition() > -53.f && !has_been_analyzed) {
             has_been_analyzed = true;
             compteur = .0f;
