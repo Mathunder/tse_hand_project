@@ -74,6 +74,10 @@ void Wall::drawWallBase(){
 
     // Parties du mur sur les côtés de la main
 
+    // Matériau du mur en gris
+//    glMaterialfv(GL_FRONT, GL_AMBIENT, grey);
+//    glMaterialfv(GL_FRONT, GL_DIFFUSE, grey);
+
     // Colonnes pour x=-15 et x=-14
     for(int j=-15; j<=16; j++)
         cube->drawCube(-15, j, position, grey);

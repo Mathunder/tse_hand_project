@@ -18,6 +18,17 @@ void Scene::initializeGL() {
     glClearColor(0.9f, 0.9f, 0.9f, 0.0f);
 
     glEnable(GL_DEPTH_TEST);
+    // Activation de l'éclairage
+    glEnable(GL_LIGHTING);
+    glEnable(GL_LIGHT0);
+
+    // Déclaration position, direction et couleur de la lumière (directionnelle)
+    GLfloat lightPosition[] = { 1.0f, 1.0f, 1.0f, 0.0f };
+    glLightfv(GL_LIGHT0, GL_POSITION, lightPosition);
+//    GLfloat colorAmbiante[] = { 1.0f, 1.0f, 1.0f, 1.0f }; // Blanc ambiant
+//    glLightfv(GL_LIGHT0, GL_AMBIENT, colorAmbiante);
+    GLfloat colorDiffuse[] = { 1.0f, 1.0f, 1.0f, 1.0f }; // Blanc diffus
+    glLightfv(GL_LIGHT0, GL_DIFFUSE, colorDiffuse);
 
     // Définition de la matrice de projection pour définir la perspective
     glMatrixMode(GL_PROJECTION);
