@@ -29,9 +29,10 @@ private:
 private slots:
     void update_scene();
     void update_camera();
-    void update_lost();
+    void update_game_over();
     void update_points();
     void analyze();
+    void on_restart_button_clicked();
 };
 
 #endif // MAINWINDOW_H
