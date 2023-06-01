@@ -8,25 +8,26 @@
 
 ## Presentation of the app
 
->### Interaction with the user
->
-><img src="./ressources/imgs/app_layout.png" alt="app layout" width="300" height="200">
->As the application starts, the game is on pause. The user needs to click on the `Start` button to begin the game. The camera is not displayed if the player hasn't clicked on the start button.
->
-><img src="./ressources/imgs/app_game_over.png" alt="app game over" width="300" height="200">
->When the user loses, a `Game Over` messages pops and the final score is shown. The user can choose to restart the game. The score is reset if the user loses.
+### Interaction with the user
 
->### Hand detection zone
->
-><img src="./ressources/imgs/app_green.png" alt="zone detection green" width="200" height="200"><img src="./ressources/imgs/app_orange.png" alt="zone detection green" width="200" height="200">
->
->The detection zone is the zone where the back of the hand becomes green and turns progressively orange. The detection is made **at the end of this zone**. When the zone is over, the hand's color turns back to grey.
+<img src="./ressources/imgs/app_layout.png" alt="app layout" width="400" height="350">
+As the application starts, the game is on pause. The user needs to click on the `Start` button to begin the game. The camera is not displayed if the player hasn't clicked on the start button.
 
->### Default behavior
->
->The application has some default behavior that one must know in order to enjoy the game to its fullest :  
->- if no hand is detected, the default configuration is a full hand (5 fingers up)
->- due to the inconsistency of the hand detection algorithm, a hand configuration can sometimes be wrongly analyzed or detected
+<img src="./ressources/imgs/app_game_over.png" alt="app game over" width="400" height="350">
+When the user loses, a `Game Over` messages pops and the final score is shown. The user can choose to restart the game. The score is reset if the user loses.
+
+### Hand detection zone
+
+<img src="./ressources/imgs/app_green.png" alt="zone detection green" width="200" height="200">
+<img src="./ressources/imgs/app_orange.png" alt="zone detection green" width="200" height="200">
+
+The detection zone is the zone where the back of the hand becomes green and turns progressively orange. The detection is made **at the end of this zone**. When the zone is over, the hand's color turns back to grey.
+
+### Default behavior
+
+The application has some default behavior that one must know in order to enjoy the game to its fullest :  
+- if no hand is detected, the default configuration is a full hand (5 fingers up)
+- due to the inconsistency of the hand detection algorithm, a hand configuration can sometimes be wrongly analyzed or detected
 
 ## Structure
 
