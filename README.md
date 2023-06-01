@@ -12,17 +12,16 @@
 >
 >![app layout](./ressources/imgs/app_layout.png)
 >As the application starts, the game is on pause. The user needs to click on the `Start` button to begin the game. The camera is not displayed if the player hasn't clicked on the start button.
-
+>
 >![app game over](./ressources/imgs/app_game_over.png)
 >When the user loses, a `Game Over` messages pops and the final score is shown. The user can choose to restart the game. The score is reset if the user loses.
 
 ### Hand detection zone
 
+<img src="./ressources/imgs/app_green.png" alt="zone detection green" width="200" height="200"><img src="./ressources/imgs/app_orange.png" alt="zone detection green" width="200" height="200">
 
 >The detection zone is the zone where the back of the hand becomes green and turns progressively orange. The detection is made **at the end of this zone**. When the zone is over, the hand's color turns back to grey.
 
-![zone detection green](./ressources/imgs/app_green.png)
-![zone detection green](./ressources/imgs/app_orange.png)
 
 ## Structure
 
@@ -52,7 +51,7 @@ The supported hand position are the following :
 ![conf7](./ressources/imgs/conf7.png)
 ![conf8](./ressources/imgs/conf8.png)
 
-## Presentation of the app
+## Default behavior
 
 The application has some default behavior that one must know in order to enjoy the game to its fullest :  
 - if no hand is detected, the default configuration is a full hand (5 fingers up)
