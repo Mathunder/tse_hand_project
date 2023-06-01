@@ -6,9 +6,9 @@
 </div>
 <br/>
 
-## Presentation of the app
+<h2 style="color: #2783ff;">1. Presentation of the app</h2>
 
-### Interaction with the user
+<h3>Interaction with the user</h3>
 
 <img src="./ressources/imgs/app_layout.png" alt="app layout" width="400" height="320"><br/>
 As the application starts, the game is on pause. The user needs to click on the `Start` button to begin the game. The camera is not displayed if the player hasn't clicked on the start button.
@@ -16,7 +16,7 @@ As the application starts, the game is on pause. The user needs to click on the 
 <img src="./ressources/imgs/app_game_over.png" alt="app game over" width="400" height="320"><br/>
 When the user loses, a `Game Over` messages pops and the final score is shown. The user can choose to restart the game. The score is reset if the user loses.
 
-### Hand detection zone
+<h3>Hand detection zone</h3>
 
 <div>
     <img src="./ressources/imgs/app_green.png" alt="zone detection green" width="200" height="200">
@@ -24,19 +24,19 @@ When the user loses, a `Game Over` messages pops and the final score is shown. T
 </div>
 The detection zone is the zone where the back of the hand becomes green and turns progressively orange. The detection is made **at the end of this zone**. When the zone is over, the hand's color turns back to grey.
 
-### Default behavior
+<h3>Default behavior</h3>
 
 The application has some default behavior that one must know in order to enjoy the game to its fullest :  
 - if no hand is detected, the default configuration is a full hand (5 fingers up)
 - due to the inconsistency of the hand detection algorithm, a hand configuration can sometimes be wrongly analyzed or detected
 
-## Structure
+<h2 style="color: #2783ff;">2. Structure</h2>
 
-### Class diagram
+<h3>Class diagram</h3>
 
 ![class diagram](./ressources/imgs/Class_diagram.png)
 
-### Class descprition
+<h3>Class descprition</h3>
 
 >`Cube` handles the creation of a cube given some coordinates.
 
@@ -51,11 +51,11 @@ A finger is to be drawn if the function that is assigned to this specific finger
 
 >`Mainwindow` handles the display of every object on the app window. This class receives all the signals and display the appropriate content.
 
->### Multithreading
->
->In order to have a fluid application, we chose to use `QtConcurrent` which allows to execute a task in an independant thread. The 3D scene and the hand detection are both executed in a thread, while the rest of the application is executed normally. Thus the application runs without any major drop in performances.
+<h3>Multithreading
 
-## Supported hand configurations
+In order to have a fluid application, we chose to use `QtConcurrent` which allows to execute a task in an independant thread. The 3D scene and the hand detection are both executed in a thread, while the rest of the application is executed normally. Thus the application runs without any major drop in performances.
+
+<h2 style="color: #2783ff;">3. Supported hand configurations</h2>
 
 The supported hand position are the following :  
 <div>
@@ -69,7 +69,7 @@ The supported hand position are the following :
     <img src="./ressources/imgs/conf8.png" width="200" height="200">
 </div>
 
-## Requirements checklist
+<h2 style="color: #2783ff;">4. Requirements checklist</h2>
 
 - [x] wall built with cubes
 - [x] display of a wall with a hole in the shape of a hand
@@ -86,7 +86,7 @@ The supported hand position are the following :
 - [x] visual effect when collision (game over)
 - [x] score and restart button
 
-## Class header
+<h2 style="color: #2783ff;">5. Class header</h2>
 
 `camera.h` :
 ```c++
