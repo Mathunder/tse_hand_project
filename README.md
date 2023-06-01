@@ -58,14 +58,16 @@ A finger is to be drawn if the function that is assigned to this specific finger
 ## Supported hand configurations
 
 The supported hand position are the following :  
-![conf1](./ressources/imgs/conf1.png)
-![conf2](./ressources/imgs/conf2.png)
-![conf3](./ressources/imgs/conf3.png)
-![conf4](./ressources/imgs/conf4.png)
-![conf5](./ressources/imgs/conf5.png)
-![conf6](./ressources/imgs/conf6.png)
-![conf7](./ressources/imgs/conf7.png)
-![conf8](./ressources/imgs/conf8.png)
+<div>
+    <img src="./ressources/imgs/conf1.png" width="200" height="200">
+    <img src="./ressources/imgs/conf2.png" width="200" height="200">
+    <img src="./ressources/imgs/conf3.png" width="200" height="200">
+    <img src="./ressources/imgs/conf4.png" width="200" height="200">
+    <img src="./ressources/imgs/conf5.png" width="200" height="200">
+    <img src="./ressources/imgs/conf6.png" width="200" height="200">
+    <img src="./ressources/imgs/conf7.png" width="200" height="200">
+    <img src="./ressources/imgs/conf8.png" width="200" height="200">
+</div>
 
 ## Requirements checklist
 
