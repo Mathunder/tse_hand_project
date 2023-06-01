@@ -18,11 +18,13 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
     connect(timer, SIGNAL(timeout()), this, SLOT(update_scene()));
     connect(timer, SIGNAL(timeout()), this, SLOT(update_camera()));
-    timer->start(16); // 60fps
+//    timer->start(16); // 60fps
 
     connect(ui->scene_widget, SIGNAL(collisionOccured()), this, SLOT(update_game_over()));
     connect(ui->scene_widget, SIGNAL(wallPassed()), this, SLOT(update_points()));
     connect(ui->scene_widget, SIGNAL(analyze()), this, SLOT(analyze()));
+
+    start = false;
 }
 
 MainWindow::~MainWindow() {
@@ -52,6 +54,7 @@ void MainWindow::update_game_over() {
     ui->label_final_score->setText(QString::number(score));
     ui->label_final_score->setVisible(true);
     ui->restart_button->setVisible(true);
+    ui->start_button->hide();
     timer->stop();
 
 }
@@ -72,5 +75,19 @@ void MainWindow::on_restart_button_clicked()
     ui->label_final_score_title->setVisible(false);
     ui->restart_button->hide();
     timer->start();
+
+}
+
+void MainWindow::on_start_button_clicked()
+{
+    if(!start) {
+        timer->start(16);
+        ui->start_button->setText(QString("Stop"));
+        start = true;
+    } else {
+        timer->stop();
+        ui->start_button->setText(QString("Start"));
+        start = false;
+    }
 }
 

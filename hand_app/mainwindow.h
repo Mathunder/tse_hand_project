@@ -31,6 +31,7 @@ private:
     QFuture<void> future_scene;
     QFuture<void> future_camera;
     int score;
+    bool start;
 
 private slots:
     void update_scene();
@@ -39,6 +40,7 @@ private slots:
     void update_points();
     void analyze();
     void on_restart_button_clicked();
+    void on_start_button_clicked();
 };
 
 #endif // MAINWINDOW_H

@@ -44,6 +44,7 @@
       <font>
        <family>MS Sans Serif</family>
        <pointsize>37</pointsize>
+       <bold>false</bold>
       </font>
      </property>
      <property name="styleSheet">
@@ -73,6 +74,7 @@ background : white;
         <property name="font">
          <font>
           <family>8514oem</family>
+          <bold>false</bold>
          </font>
         </property>
         <property name="styleSheet">
@@ -91,6 +93,7 @@ background : white;
         <property name="font">
          <font>
           <family>8514oem</family>
+          <bold>false</bold>
          </font>
         </property>
         <property name="styleSheet">
@@ -189,6 +192,39 @@ border: 1px solid black;</string>
     </property>
     <property name="text">
      <string>Restart</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="start_button">
+    <property name="geometry">
+     <rect>
+      <x>580</x>
+      <y>430</y>
+      <width>80</width>
+      <height>18</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="mouseTracking">
+     <bool>false</bool>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-radius: 5px;
+background-color: white;
+color: black;
+border: 1px solid black;</string>
+    </property>
+    <property name="text">
+     <string>Start</string>
     </property>
    </widget>
   </widget>
