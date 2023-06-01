@@ -18,7 +18,8 @@
 
 ### Hand detection zone
 
->![zone detection green](./ressources/imgs/app_green.png)![zone detection green](./ressources/imgs/app_orange.png)
+>![zone detection green](./ressources/imgs/app_green.png)
+>![zone detection green](./ressources/imgs/app_orange.png)
 >The detection zone is the zone where the back of the hand becomes green and turns progressively orange. The detection is made **at the end of this zone**. When the zone is over, the hand's color turns back to grey.
 
 ## Structure
