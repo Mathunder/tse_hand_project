@@ -26,8 +26,6 @@ private:
     bool analyze;
     unsigned int nb_threads = std::thread::hardware_concurrency();
 
-private slots:
-    void on_analyze_button_clicked();
 };
 
 #endif // CAMERA_H

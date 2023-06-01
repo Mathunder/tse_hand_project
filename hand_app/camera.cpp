@@ -25,13 +25,6 @@ Camera::~Camera()
     delete webcam;
 }
 
-void Camera::on_analyze_button_clicked()
-{
-    analyze = true;
-    if(analyze)
-        webcam->analyze_hand();
-}
-
 Webcam* Camera::getWebcam() {
     return webcam;
 }

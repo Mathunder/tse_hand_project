@@ -5,6 +5,9 @@
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow) {
     ui->setupUi(this);
+    ui->restart_button->setVisible(false);
+    ui->label_final_score_title->setVisible(false);
+    ui->label_final_score->setVisible(false);
     ui->label_lost->setVisible(false);
     QFont font;
     font.setFamily("MS Sans Serif");
@@ -17,8 +20,9 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect(timer, SIGNAL(timeout()), this, SLOT(update_camera()));
     timer->start(16); // 60fps
 
-    connect(ui->scene_widget, SIGNAL(collisionOccured()), this, SLOT(update_lost()));
+    connect(ui->scene_widget, SIGNAL(collisionOccured()), this, SLOT(update_game_over()));
     connect(ui->scene_widget, SIGNAL(wallPassed()), this, SLOT(update_points()));
+    connect(ui->scene_widget, SIGNAL(analyze()), this, SLOT(analyze()));
 }
 
 MainWindow::~MainWindow() {
@@ -37,12 +41,36 @@ void MainWindow::update_camera() {
     ui->camera_widget->displayCamera();
 }
 
-void MainWindow::update_lost() {
+void MainWindow::analyze() {
+    ui->camera_widget->getWebcam()->analyze_hand();
+}
+
+void MainWindow::update_game_over() {
     ui->label_lost->setVisible(true);
     ui->camera_widget->hide();
+    ui->label_final_score_title->setVisible(true);
+    ui->label_final_score->setText(QString::number(score));
+    ui->label_final_score->setVisible(true);
+    ui->restart_button->setVisible(true);
+    timer->stop();
+
 }
 
 void MainWindow::update_points() {
     score++;
     ui->label_points->setText(QString::number(score));
 }
+
+void MainWindow::on_restart_button_clicked()
+{
+    score = 0;
+    ui->label_points->setText(QString::number(score));
+    ui->camera_widget->setVisible(true);
+    ui->label_lost->setVisible(false);
+    ui->label_final_score->setVisible(false);
+    ui->label_final_score->setVisible(false);
+    ui->label_final_score_title->setVisible(false);
+    ui->restart_button->hide();
+    timer->start();
+}
+

@@ -50,6 +50,54 @@ background : white;
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
+    <widget class="QWidget" name="horizontalLayoutWidget_2">
+     <property name="geometry">
+      <rect>
+       <x>269</x>
+       <y>190</y>
+       <width>171</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <widget class="QLabel" name="label_final_score_title">
+        <property name="font">
+         <font>
+          <family>8514oem</family>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: red;</string>
+        </property>
+        <property name="text">
+         <string>Final score :</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_final_score">
+        <property name="font">
+         <font>
+          <family>8514oem</family>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: red;</string>
+        </property>
+        <property name="text">
+         <string>0</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
    </widget>
    <widget class="Camera" name="camera_widget" native="true">
     <property name="enabled">
@@ -69,13 +117,18 @@ background : white;
      <rect>
       <x>40</x>
       <y>380</y>
-      <width>51</width>
-      <height>21</height>
+      <width>96</width>
+      <height>22</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <widget class="QLabel" name="label_points_title">
+       <property name="font">
+        <font>
+         <family>8514oem</family>
+        </font>
+       </property>
        <property name="text">
         <string>Points :</string>
        </property>
@@ -83,12 +136,36 @@ background : white;
      </item>
      <item>
       <widget class="QLabel" name="label_points">
+       <property name="font">
+        <font>
+         <family>8514oem</family>
+        </font>
+       </property>
        <property name="text">
         <string>0</string>
        </property>
       </widget>
      </item>
     </layout>
+   </widget>
+   <widget class="QPushButton" name="restart_button">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>430</y>
+      <width>80</width>
+      <height>18</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-radius: 5px;
+background-color: white;
+color: black;
+border-color: black;</string>
+    </property>
+    <property name="text">
+     <string>Start</string>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">

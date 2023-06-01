@@ -12,6 +12,8 @@ Scene::Scene(QWidget *parent) : QOpenGLWidget(parent),
     hand = new Hand();
     wall = new Wall();
     one_by_one = true;
+    has_been_analyzed = false;
+    compteur = .0f;
 }
 
 void Scene::initializeGL() {
@@ -67,7 +69,23 @@ void Scene::paintGL() {
             this->wall_finger[i] = !(wall->configuration[temp][i]);
         wall->setPosition(-150.f);
         one_by_one = true;
+        has_been_analyzed = false;
     }
+
+    if((wall->getPosition() > -120.f) && (wall->getPosition() < -50.f)) {
+        GLfloat green[3] = {.0f + compteur, 1.f - compteur/5, .0f};
+        hand->setColor(green);
+        compteur += .06f;
+        if(wall->getPosition() > -53.f && !has_been_analyzed) {
+            has_been_analyzed = true;
+            compteur = .0f;
+            emit analyze();
+        }
+    } else {
+        GLfloat grey[3] = {.7f, .7f, .7f};
+        hand->setColor(grey);
+    }
+
     wall->setPosition(wall->getPosition() + 2.f);
     wall->drawWallBase();
     wall->drawWallThumb(this->wall_finger[0]);
@@ -86,10 +104,8 @@ void Scene::paintGL() {
             }
         }
         if(collision) {
-            std::cout << "collision" << std::endl;
             emit collisionOccured();
         } else {
-            std::cout << "ok" << std::endl;
             emit wallPassed();
         }
         one_by_one = false;
