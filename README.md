@@ -42,8 +42,8 @@ The application has some default behavior that one must know in order to enjoy t
 
 ## Requirements checklist
 
-[x] wall built with cubes
-[x] display of a wall with a hole in the shape of a hand
+- [x] wall built with cubes
+- [x] display of a wall with a hole in the shape of a hand
 [x] point of view and light set so there is a 3D look
 [x] TSE logo on the wall
 [x] wall with texture
