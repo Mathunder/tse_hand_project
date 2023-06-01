@@ -12,19 +12,19 @@ namespace Ui {
 class Scene;
 }
 
+
+/*
+ * This class draws the 3D scene and send signals if some conditions are met.
+ *
+ * @author : Matthieu d'Hoop
+ * @co-author : Alban Lemière
+ */
 class Scene : public QOpenGLWidget
 {
     Q_OBJECT
 
 protected:
-
-    // Fonction d'initialisation
     void initializeGL();
-
-//    // Fonction de redimensionnement
-//    void resizeGL(int width, int height);
-
-    // Fonction d'affichage
     void paintGL();
 
 public:
@@ -43,6 +43,8 @@ private:
     bool one_by_one;
     bool has_been_analyzed;
     float compteur;
+    QImage mur;
+    GLuint mur_texture;
 
 signals:
     void collisionOccured();

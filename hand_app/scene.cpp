@@ -14,21 +14,22 @@ Scene::Scene(QWidget *parent) : QOpenGLWidget(parent),
     one_by_one = true;
     has_been_analyzed = false;
     compteur = .0f;
+    mur = QImage(":/res/logo/mur.png").convertToFormat(QImage::Format_RGBA8888);
 }
 
 void Scene::initializeGL() {
     glClearColor(0.9f, 0.9f, 0.9f, 0.0f);
 
     glEnable(GL_DEPTH_TEST);
+    glEnable(GL_TEXTURE_2D);
     // Activation de l'éclairage
     glEnable(GL_LIGHTING);
     glEnable(GL_LIGHT0);
 
-    // Déclaration position, direction et couleur de la lumière (directionnelle)
-    GLfloat lightPosition[] = { -1.0f, -1.0f, 1.0f, 0.0f };
+    // Déclaration position, direction et couleur de la lumière
+    GLfloat lightPosition[] = { .0f, 30.0f, 20.0f, 1.0f };
     glLightfv(GL_LIGHT0, GL_POSITION, lightPosition);
-//    GLfloat colorAmbiante[] = { 1.0f, 1.0f, 1.0f, 1.0f }; // Blanc ambiant
-//    glLightfv(GL_LIGHT0, GL_AMBIENT, colorAmbiante);
+
     GLfloat colorDiffuse[] = { 1.0f, 1.0f, 1.0f, 1.0f }; // Blanc diffus
     glLightfv(GL_LIGHT0, GL_DIFFUSE, colorDiffuse);
 
@@ -45,10 +46,6 @@ void Scene::initializeGL() {
 
     glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
 }
-
-//void Scene::resizeGL(int width, int height) {
-
-//}
 
 void Scene::paintGL() {
     glPopMatrix();
@@ -72,11 +69,11 @@ void Scene::paintGL() {
         has_been_analyzed = false;
     }
 
-    if((wall->getPosition() > -120.f) && (wall->getPosition() < -50.f)) {
+    if((wall->getPosition() > -130.f) && (wall->getPosition() < -70.f) && !has_been_analyzed) {
         GLfloat green[3] = {.0f + compteur, 1.f - compteur/5, .0f};
         hand->setColor(green);
         compteur += .06f;
-        if(wall->getPosition() > -53.f && !has_been_analyzed) {
+        if(wall->getPosition() > -76.f) {
             has_been_analyzed = true;
             compteur = .0f;
             emit analyze();
@@ -86,13 +83,22 @@ void Scene::paintGL() {
         hand->setColor(grey);
     }
 
-    wall->setPosition(wall->getPosition() + 2.f);
+    glEnable(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D, mur_texture);
+    glTexImage2D(GL_TEXTURE_2D, 0, 4, mur.width(), mur.height(), 0, GL_RGBA, GL_UNSIGNED_BYTE, mur.bits());
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glGenTextures(1, &mur_texture);
+
+    wall->setPosition(wall->getPosition() + 1.5f);
     wall->drawWallBase();
     wall->drawWallThumb(this->wall_finger[0]);
     wall->drawWallIndex(this->wall_finger[1]);
     wall->drawWallMiddleFinger(this->wall_finger[2], this->wall_finger[1], this->wall_finger[3]);
     wall->drawWallRingFinger(this->wall_finger[3]);
     wall->drawWallLittleFinger(this->wall_finger[4], this->wall_finger[3]);
+    wall->drawLogo();
+    glDisable(GL_TEXTURE_2D);
 
     //Checking if there is a collision
     if(wall->getPosition() > -3.f && wall->getPosition() < 2.f && one_by_one) {

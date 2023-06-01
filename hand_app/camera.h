@@ -10,7 +10,11 @@ namespace Ui {
 class Camera;
 }
 QT_END_NAMESPACE
-
+/*
+ * This class handles the display of the webcam.
+ *
+ * @author : Matthieu d'Hoop
+ */
 class Camera : public QWidget
 {
     Q_OBJECT

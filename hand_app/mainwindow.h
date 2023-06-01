@@ -10,6 +10,12 @@ QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
 
+
+/*
+ * This class manages the general layout and events of the application. It handles all the signals of the app.
+ *
+ * @author : Matthieu d'Hoop
+ */
 class MainWindow : public QMainWindow
 
 {

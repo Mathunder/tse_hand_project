@@ -14,6 +14,11 @@ using namespace cv;
 using namespace cv::dnn;
 #include <iostream>
 
+/*
+ * This class handles the hand detection and the generation of images for the video caption.
+ *
+ * @author : Matthieu d'Hoop
+ */
 class Webcam
 {
 public:

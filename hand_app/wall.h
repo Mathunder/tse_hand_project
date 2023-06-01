@@ -5,6 +5,12 @@
 #include <GL/glu.h>
 #include <QtWidgets>
 
+/*
+ * This class handles the modelization of the wall given the number of fingers that is randomly selected.
+ *
+ * @author : Alban Lemière
+ * @co-author : Matthieu d'Hoop
+ */
 class Wall {
 private:
     GLfloat light_grey[3] = {0.7f, 0.7f, 0.7f};
@@ -14,7 +20,6 @@ private:
     GLfloat blue[3] = {0.f, 0.f, 1.f};
     float position;
     Cube *cube;
-
 
 public:
     Wall();
@@ -26,6 +31,7 @@ public:
     void drawWallMiddleFinger(boolean middleWall_is_drawn, boolean indexWall_is_drawn, boolean ringWall_is_drawn);
     void drawWallRingFinger(boolean is_drawn);
     void drawWallLittleFinger(boolean littleWallis_drawn, boolean ringWall_is_drawn);
+    void drawLogo();
     void setPosition(float pos);
     float getPosition();
     bool configuration[8][5] = {

@@ -4,6 +4,12 @@
 #include <GL/gl.h>
 #include <QtWidgets>
 
+/*
+ * This class handles the creation and display of a cube, give its position and/or its color.
+ *
+ * @authors : Matthieu d'Hoop
+ * @co-author : Alban Lemière
+ */
 class Cube {
 private:
     GLfloat light_grey[3] = {0.7f, 0.7f, 0.7f};
@@ -15,8 +21,9 @@ private:
 public:
     Cube(float depth);
     ~Cube();
-    void drawCube(float bottom_left_corner_x, float bottom_left_corner_y, float bottom_left_corner_z, GLfloat color[], boolean is_wall);
-    void drawCubeTextureLogo(float bottom_left_corner_x, float bottom_left_corner_y, float bottom_left_corner_z, GLfloat color[], GLuint texture);
+    void drawCube(float bottom_left_corner_x, float bottom_left_corner_y, float bottom_left_corner_z, GLfloat color[]);
+    void drawCube(float bottom_left_corner_x, float bottom_left_corner_y, float bottom_left_corner_z);
+    void drawCubeTextureLogo(float bottom_left_corner_x, float bottom_left_corner_y, float bottom_left_corner_z, GLuint texture);
 };
 
 #endif // CUBE_H

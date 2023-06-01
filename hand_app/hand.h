@@ -4,10 +4,14 @@
 
 #include "cube.h"
 
+/*
+ * This class handles the modelization of the hand, given the number of fingers that must be displayed.
+ *
+ * @author : Matthieu d'Hoop
+ */
 class Hand {
 private:
     GLfloat light_grey[3] = {0.7f, 0.7f, 0.7f};
-//    GLfloat black[3] = {0.f, 0.f, 0.f};
 
 public:
     Hand();
