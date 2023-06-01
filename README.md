@@ -16,6 +16,12 @@
 >![app game over](./ressources/imgs/app_game_over.png)
 >When the user loses, a `Game Over` messages pops and the final score is shown. The user can choose to restart the game. The score is reset if the user loses.
 
+### Hand detection zone
+
+>![zone detection green](./ressources/imgs/app_green.png)
+>![zone detection green](./ressources/imgs/app_orange.png)
+>The detection zone is the zone where the back of the hand becomes green and turns progressively orange. The detection is made **at the end of this zone**. When the zone is over, the hand's color turns back to grey.
+
 ## Structure
 
 >### 3D drawing
