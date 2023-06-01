@@ -22,6 +22,11 @@
 >
 >The detection zone is the zone where the back of the hand becomes green and turns progressively orange. The detection is made **at the end of this zone**. When the zone is over, the hand's color turns back to grey.
 
+### Default behavior
+
+The application has some default behavior that one must know in order to enjoy the game to its fullest :  
+- if no hand is detected, the default configuration is a full hand (5 fingers up)
+- due to the inconsistency of the hand detection algorithm, a hand configuration can sometimes be wrongly analyzed or detected
 
 ## Structure
 
@@ -59,12 +64,6 @@ The supported hand position are the following :
 ![conf6](./ressources/imgs/conf6.png)
 ![conf7](./ressources/imgs/conf7.png)
 ![conf8](./ressources/imgs/conf8.png)
-
-## Default behavior
-
-The application has some default behavior that one must know in order to enjoy the game to its fullest :  
-- if no hand is detected, the default configuration is a full hand (5 fingers up)
-- due to the inconsistency of the hand detection algorithm, a hand configuration can sometimes be wrongly analyzed or detected
 
 ## Requirements checklist
 
