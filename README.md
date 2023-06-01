@@ -30,11 +30,11 @@ All the `signals` are emitted by the `Scene` class, which draws the 3D scene. Su
 ## Hand Detection
 
 The supported hand position are the following :  
-[conf1](./ressources/imgs/conf1.png)
-[conf2](./ressources/imgs/conf2.png)
-[conf3](./ressources/imgs/conf3.png)
-[conf4](./ressources/imgs/conf4.png)
-[conf5](./ressources/imgs/conf5.png)
-[conf6](./ressources/imgs/conf6.png)
-[conf7](./ressources/imgs/conf7.png)
-[conf8](./ressources/imgs/conf8.png)
+![conf1](./ressources/imgs/conf1.png)
+![conf2](./ressources/imgs/conf2.png)
+![conf3](./ressources/imgs/conf3.png)
+![conf4](./ressources/imgs/conf4.png)
+![conf5](./ressources/imgs/conf5.png)
+![conf6](./ressources/imgs/conf6.png)
+![conf7](./ressources/imgs/conf7.png)
+![conf8](./ressources/imgs/conf8.png)
