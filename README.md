@@ -10,16 +10,16 @@
 
 ### Interaction with the user
 
-<img src="./ressources/imgs/app_layout.png" alt="app layout" width="400" height="320" align="center">  
+<img src="./ressources/imgs/app_layout.png" alt="app layout" width="400" height="320"><br/>
 As the application starts, the game is on pause. The user needs to click on the `Start` button to begin the game. The camera is not displayed if the player hasn't clicked on the start button.
 
-<img src="./ressources/imgs/app_game_over.png" alt="app game over" width="400" height="320" align="center">  
+<img src="./ressources/imgs/app_game_over.png" alt="app game over" width="400" height="320"><br/>
 When the user loses, a `Game Over` messages pops and the final score is shown. The user can choose to restart the game. The score is reset if the user loses.
 
 ### Hand detection zone
 
-<img src="./ressources/imgs/app_green.png" alt="zone detection green" width="200" height="200" align="center"><div></div>
-<img src="./ressources/imgs/app_orange.png" alt="zone detection green" width="200" height="200" align="center">
+<img src="./ressources/imgs/app_green.png" alt="zone detection green" width="200" height="200"><br/>
+<img src="./ressources/imgs/app_orange.png" alt="zone detection green" width="200" height="200">
 
 The detection zone is the zone where the back of the hand becomes green and turns progressively orange. The detection is made **at the end of this zone**. When the zone is over, the hand's color turns back to grey.
 
