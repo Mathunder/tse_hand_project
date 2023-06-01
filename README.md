@@ -44,15 +44,15 @@ The application has some default behavior that one must know in order to enjoy t
 
 - [x] wall built with cubes
 - [x] display of a wall with a hole in the shape of a hand
-[x] point of view and light set so there is a 3D look
-[x] TSE logo on the wall
-[x] wall with texture
-[x] hand built with cubes so that a hand shape is recognizable
-[x] fingers are recognizable
-[x] hand configuration detection
-[x] update of the hand
-[x] great latency
-[x] webcam zone
-[x] collision detection
-[x] visual effect when collision (game over)
-[x] score and restart button
+- [x] point of view and light set so there is a 3D look
+- [x] TSE logo on the wall
+- [x] wall with texture
+- [x] hand built with cubes so that a hand shape is recognizable
+- [x] fingers are recognizable
+- [x] hand configuration detection
+- [x] update of the hand
+- [x] great latency
+- [x] webcam zone
+- [x] collision detection
+- [x] visual effect when collision (game over)
+- [x] score and restart button
