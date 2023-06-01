@@ -18,9 +18,10 @@ When the user loses, a `Game Over` messages pops and the final score is shown. T
 
 ### Hand detection zone
 
-<img src="./ressources/imgs/app_green.png" alt="zone detection green" width="200" height="200"><br/>
-<img src="./ressources/imgs/app_orange.png" alt="zone detection green" width="200" height="200">
-
+<div>
+    <img src="./ressources/imgs/app_green.png" alt="zone detection green" width="200" height="200">
+    <img src="./ressources/imgs/app_orange.png" alt="zone detection green" width="200" height="200">
+</div>
 The detection zone is the zone where the back of the hand becomes green and turns progressively orange. The detection is made **at the end of this zone**. When the zone is over, the hand's color turns back to grey.
 
 ### Default behavior
