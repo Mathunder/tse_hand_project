@@ -18,28 +18,37 @@
 
 ### Hand detection zone
 
-<img src="./ressources/imgs/app_green.png" alt="zone detection green" width="200" height="200"><img src="./ressources/imgs/app_orange.png" alt="zone detection green" width="200" height="200">
-
+><img src="./ressources/imgs/app_green.png" alt="zone detection green" width="200" height="200"><img src="./ressources/imgs/app_orange.png" alt="zone detection green" width="200" height="200">
+>
 >The detection zone is the zone where the back of the hand becomes green and turns progressively orange. The detection is made **at the end of this zone**. When the zone is over, the hand's color turns back to grey.
 
 
 ## Structure
 
->### 3D drawing
->
->The idea of the drawing method is to identify the elements that will always be displayed. For example, the fingers will not always be drawn, but the base of the hand will be, so there is no need for it to be coded more than once.  
-A finger is to be drawn if the function that is assigned to this specific finger is given the argument `true` and vice versa.  
-This applies to the `Wall` and `Hand` class.  
+### Class diagram
+
+![class diagram](./ressources/imgs/Class_diagram.png)
+
+### Class descprition
+
+>`Cube` handles the creation of a cube given some coordinates.
+
+>`Hand` and `Wall` are the classes that create the hand and wall with cubes. They are similar in their functionnality and behavior. The idea is to identify the elements that will always be displayed. For example, the fingers will not always be drawn, but the base of the hand will be, so there is no need for it to be coded more than once.  
+A finger is to be drawn if the function that is assigned to this specific finger is given the argument `true` and vice versa.
+
+>`Camera` handles the display of the camera.
+
+>`Webcam` creates the image that is to be displayed by the `Camera` class. It also deals with the hand detection. 
+
+>`Scene` draws the 3D scene and emit signals if some conditions are met.
+
+>`Mainwindow` handles the display of every object on the app window. This class receives all the signals and display the appropriate content.
 
 >### Multithreading
 >
 >In order to have a fluid application, we chose to use `QtConcurrent` which allows to execute a task in an independant thread. The 3D scene and the hand detection are both executed in a thread, while the rest of the application is executed normally. Thus the application runs without any major drop in performances.
 
->### Signals
->
->All the `signals` are emitted by the `Scene` class, which draws the 3D scene. Such behavior allows to handle every event that may arise (game over, wall passed successfully, etc). All these signals are received by the `Mainwindow` class which modifies the displayed content.
-
-## Hand Detection
+## Supported hand configurations
 
 The supported hand position are the following :  
 ![conf1](./ressources/imgs/conf1.png)
