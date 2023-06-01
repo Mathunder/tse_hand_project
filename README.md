@@ -9,8 +9,16 @@
 ## Structure
 
 ## Presentation of the app
-s
+
 ![app layout](./ressources/imgs/app_layout.png)
+
+>### Interaction with the user
+>
+>As the application starts, the game is on pause. The user needs to click on the `Start` button to begin the game. The camera is not displayed if the player hasn't clicked on the start button.
+
+![app game over](./ressources/imgs/app_game_over.png)
+
+>When the user loses, a `Game Over` messages pops and the final score is shown. The user can choose to restart the game. The score is reset if the user loses.
 
 >### 3D drawing
 >
