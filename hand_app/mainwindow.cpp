@@ -56,7 +56,6 @@ void MainWindow::update_game_over() {
     ui->restart_button->setVisible(true);
     ui->start_button->hide();
     timer->stop();
-
 }
 
 void MainWindow::update_points() {
@@ -74,6 +73,7 @@ void MainWindow::on_restart_button_clicked()
     ui->label_final_score->setVisible(false);
     ui->label_final_score_title->setVisible(false);
     ui->restart_button->hide();
+    ui->start_button->setVisible(true);
     timer->start();
 
 }

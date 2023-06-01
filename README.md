@@ -8,6 +8,10 @@
 
 ## Structure
 
+## Presentation of the app
+s
+![app layout](./ressources/imgs/app_layout.png)
+
 >### 3D drawing
 >
 >The idea of the drawing method is to identify the elements that will always be displayed. For example, the fingers will not always be drawn, but the base of the hand will be, so there is no need for it to be coded more than once.  
