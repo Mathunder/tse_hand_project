@@ -24,9 +24,13 @@ class Webcam
 public:
     Webcam();
     ~Webcam();
+    // Generates the image from the webcam and returns it
     QImage run();
+    // Analyzes the hand configuration
     void analyze_hand();
+    // Gets the current instance of the Webcam
     static Webcam* getInstance();
+    // Stores the detected hand configuration
     bool finger[5] = {true, true, true, true, true};
 
 private:

@@ -24,16 +24,25 @@ private:
 public:
     Wall();
     ~Wall();
-
+    // Draws the cubes that are always displayed no matter the configuration
     void drawWallBase();
+    // Draws the hole for the thumb or not
     void drawWallThumb(boolean is_drawn);
+    // Draws the index for the thumb or not
     void drawWallIndex(boolean is_drawn);
+    // Draws the hole for the middle finger or not
     void drawWallMiddleFinger(boolean middleWall_is_drawn, boolean indexWall_is_drawn, boolean ringWall_is_drawn);
+    // Draws the hole for the ring finger or not
     void drawWallRingFinger(boolean is_drawn);
+    // Draws the hole for the ring finger or not
     void drawWallLittleFinger(boolean littleWallis_drawn, boolean ringWall_is_drawn);
+    // Draws the logo of TSE
     void drawLogo();
+    // Sets the position of the wall, allowing the translation
     void setPosition(float pos);
+    // Gets the position of the wall, allowing to track its progress
     float getPosition();
+    // Stores the hand configuration for the wall
     bool configuration[8][5] = {
         {true, true, true, true, true},
         {false, true, true, true, true},

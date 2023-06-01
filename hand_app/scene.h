@@ -28,8 +28,11 @@ protected:
     void paintGL();
 
 public:
+    // Constructor
     explicit Scene(QWidget *parent = nullptr);
+    // Allows to link the webcam that analyzes the hand and the 3D scene (link Webcam and Scene)
     void setWebcam(Webcam *webcam);
+    // Destructor
     ~Scene();
 
 private:
@@ -47,8 +50,12 @@ private:
     GLuint mur_texture;
 
 signals:
+    // The following signals must be sent when :
+    // A collision happened
     void collisionOccured();
+    // The wall has been passed
     void wallPassed();
+    // The hand must be analyzed
     void analyze();
 };
 

@@ -12,7 +12,8 @@ QT_END_NAMESPACE
 
 
 /*
- * This class manages the general layout and events of the application. It handles all the signals of the app.
+ * This class manages the general layout and events of the application.
+ * It handles all the signals of the app.
  *
  * @author : Matthieu d'Hoop
  */
@@ -34,12 +35,19 @@ private:
     bool start;
 
 private slots:
+    // Updates the 3D scene
     void update_scene();
+    // Updates the camera frame
     void update_camera();
+    // Updates the game over state
     void update_game_over();
+    // Updates the score of the player
     void update_points();
+    // Start the hand detection
     void analyze();
+    // Handles the event "restart button clicked"
     void on_restart_button_clicked();
+    // Handles the event "start button clicked"
     void on_start_button_clicked();
 };
 

@@ -10,6 +10,7 @@ namespace Ui {
 class Camera;
 }
 QT_END_NAMESPACE
+
 /*
  * This class handles the display of the webcam.
  *
@@ -19,9 +20,13 @@ class Camera : public QWidget
 {
     Q_OBJECT
 public:
+    // Constructor
     explicit Camera(QWidget *parent = nullptr);
+    // Display the image captionned by the webcam in the camera_label
     void displayCamera();
+    // Returns the instance of the Webcam that is being used by the Camera
     Webcam* getWebcam();
+    // Destructor
     ~Camera();
 
 private:
